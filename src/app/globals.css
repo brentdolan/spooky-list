@@ -1,5 +1,12 @@
-
-
+:root {
+    --grimace: #BEB8EB;
+    --slime: #A9E5BB;
+    --pumpkin: #F6B68D;
+    --black-cat: #1E1E1E;
+    --ghost: #F9FFFA;
+    --headingfont: Epilogue, sans-serif;
+    --primaryfont: Poppins, sans-serif
+}
 .container {
     display: grid;
     grid-template-columns: 10rem 10rem 10rem;
@@ -7,5 +14,5 @@
 }
 body {
     margin: 0;
-    background-color: #734F96;
+    background-color: var(--grimace) ;
 }
