@@ -2,6 +2,8 @@
 import React from 'react'
 import styles from './NavBar.module.scss'
 import { Button } from '@/components/button/button'
+import { Checkbox } from '@mui/material'
+import { CheckCircleOutline } from '@mui/icons-material'
 
 interface NavBarProps {
   currentPage: string
