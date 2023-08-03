@@ -13,6 +13,5 @@ export const Button = ({ text, onClick }: ButtonProps): JSX.Element => {
               {text}
           </button>
       </div>
-
   )
 }

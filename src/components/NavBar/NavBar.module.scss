@@ -19,4 +19,13 @@
 .navText {
   font-family: var(--primaryfont);
   font-size: 1.25rem;
+  color: var(--black-cat);
+  text-decoration: none;
+  border-bottom: 6px solid transparent;
+  padding-top: 6px;
 }
+
+.active {
+  border-bottom: 6px solid var(--pumpkin);
+}
+
