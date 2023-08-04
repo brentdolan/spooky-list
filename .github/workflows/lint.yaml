@@ -1,11 +1,11 @@
-name: Run Tests
-run-name: Running tests on PR
+name: Check Lint
+run-name: Running lint on PR
 on: [pull_request]
 jobs:
-  Test:
+  Lint:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: npm i
-      - run: npm run test
+      - run: npm run lint

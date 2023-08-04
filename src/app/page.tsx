@@ -1,9 +1,10 @@
-import Image from 'next/image'
+import React from 'react'
 import styles from './page.module.css'
 
-export default function Home() {
+const Home = (): JSX.Element => {
   return (
-    <main className={styles.main}>
-    </main>
+      <main className={styles.main} />
   )
 }
+
+export default Home
