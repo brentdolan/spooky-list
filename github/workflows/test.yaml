@@ -1,0 +1,11 @@
+name: Run Tests
+run-name: Running tests on ${{ github.actor }}'s PR
+on: pull_request
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: npm i
+      - run: npm run test
