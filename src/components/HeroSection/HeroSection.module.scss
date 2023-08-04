@@ -1,0 +1,52 @@
+.heroSection {
+  width: 100%;
+  display: grid;
+  grid-template-areas: 'header header' 'body-text body-text' 'button image';
+
+  h2 {
+    font: var(--headingfont);
+    font-size: 3rem;
+    font-weight: 800;
+    grid-area: header;
+  }
+
+  button {
+    grid-area: button;
+    margin-block: auto;
+  }
+}
+
+.imageContainer{
+  width: 100%;
+  grid-area: image;
+
+  img{
+    width: 100%;
+  }
+}
+
+.bodyText {
+  font: var(--primaryfont);
+  font-size: 1.5rem;
+  font-weight: 500;
+  grid-area: body-text;
+}
+
+@media (min-width: 550px) {
+  .heroSection > button {
+    margin-top: 3rem;
+    margin-bottom: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .heroSection {
+    grid-template-areas: 'image header' 'image body-text' 'image button';
+  }
+
+  .heroSection.flipped {
+    grid-template-areas: 'header image' 'body-text image' 'button image';
+  }
+}
+
+

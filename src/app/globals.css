@@ -4,8 +4,8 @@
     --pumpkin: #F6B68D;
     --black-cat: #1E1E1E;
     --ghost: #F9FFFA;
-    --headingfont: Epilogue, sans-serif;
-    --primaryfont: Poppins, sans-serif
+    /*--headingfont: Epilogue, sans-serif;*/
+    /*--primaryfont: Poppins, sans-serif*/
 }
 .container {
     display: grid;
