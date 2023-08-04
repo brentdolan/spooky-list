@@ -1,5 +1,5 @@
 name: Run Tests
-run-name: Running tests on ${{ github.actor }}'s PR
+run-name: Running tests on PR
 on: pull_request
 jobs:
   Test:
