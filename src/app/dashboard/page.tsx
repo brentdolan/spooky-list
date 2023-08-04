@@ -1,12 +1,12 @@
 'use client'
 import React from 'react'
-import { Title } from '@/components/title/title'
-import { Button } from '@/components/button/button'
+import { Title } from '@/components/Title/Title'
+import { Button } from '@/components/Button/Button'
 import { NavBar } from '@/components/NavBar/NavBar'
 
 const DashboardPage = (): JSX.Element => {
   return (
-      <div>
+      <div data-testid={'dashboard'}>
           <NavBar currentPage={'Dashboard'} />
           <Title text={'Dashboard'} />
       </div>

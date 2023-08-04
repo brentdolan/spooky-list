@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import styles from './button.module.scss'
+import styles from './Button.module.scss'
 
 interface ButtonProps {
   text: string

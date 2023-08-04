@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import styles from './NavBar.module.scss'
-import { Button } from '@/components/button/button'
+import { Button } from '@/components/Button/Button'
 
 interface NavBarProps {
   currentPage: string
@@ -13,14 +13,17 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
     { link: '/about', text: 'About' },
     { link: '/catalog', text: 'Catalog' }
   ]
+
   const redirectToSignUp = (): void => {
     window.location.href = '/sign-up'
   }
+
   return (
-      <nav className={styles.navBar}>
+      <nav className={styles.navBar} data-testid={'nav-bar'}>
           <h1 className={styles.navTitle}>Spooky</h1>
           {navLinks.map(link => (
               <a
+                  data-testid={`nav-link-${link.text}`}
                   className={`${styles.navText} ${(link.text === currentPage) ? styles.active : ''}`}
                   href={link.link}
                   key={link.link}
