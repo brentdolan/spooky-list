@@ -8,7 +8,7 @@ const DashboardPage = (): JSX.Element => {
       <div data-testid={'dashboard'}>
           <NavBar currentPage={'Dashboard'} />
           <HeroSection
-              headerText={"What's your mom's favorite scary movie?"}
+              headerText={"What's your favorite scary movie?"}
               bodyText={'Lorem ipsum dolor sit amet consectetur. Justo dignissim neque id duis purus amet at ullamcorper phasellus.'}
               image={'/sillyGhosts.png'}
               altText={'Two Cartoon Ghosts'}
