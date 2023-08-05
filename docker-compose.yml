@@ -20,3 +20,23 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    restart: always
+    volumes:
+      - ./backend:/app
+    ports:
+      - '8000:8000'
+  db:
+    container_name: spooky-list__db
+    image: postgres:15.3-bullseye
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE=spooky_movies
+    ports:
+      - '5432:5432'
