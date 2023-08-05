@@ -26,6 +26,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 RUN npm run build
+RUN ls ./.next && sleep 10
 
 FROM base AS runner
 WORKDIR /app
@@ -38,6 +39,10 @@ RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
 COPY --from=builder /app/public ./public
+
+# Standalone only applies when you're using standalone to optimize build sizes.
+# If true, Next scans all files to deploy only what's needed.
+# https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 

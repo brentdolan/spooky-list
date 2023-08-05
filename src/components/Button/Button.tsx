@@ -8,10 +8,8 @@ interface ButtonProps {
 }
 export const Button = ({ text, onClick }: ButtonProps): JSX.Element => {
   return (
-      <div>
-          <button onClick={onClick} data-testid="button" className={styles.button}>
-              {text}
-          </button>
-      </div>
+      <button onClick={onClick} data-testid="button" className={styles.button}>
+          {text}
+      </button>
   )
 }
