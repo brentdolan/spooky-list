@@ -26,18 +26,3 @@ class MovieViewSet(viewsets.ModelViewSet):
             return Movie.objects.all()
         else:
             return Movie.objects.all()
-
-    @action(methods=['get'], detail=False)
-    def by_category(self, _):
-        categories = {
-            "body_horror": [],
-            "family_friendly": []
-        }
-
-        movies = Movie.objects.all()
-
-        for movie in movies:
-            if movie.title in categories:
-                categories[movie.title].append(movie.title)
-
-        return Response(categories)

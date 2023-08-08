@@ -4,16 +4,17 @@ from .models import Movie
 
 
 class MovieTestCase(TestCase):
+    movie_count = 25
+
     @classmethod
-    def setUp(self) -> None:
-        self.movie_count = 25
+    def setUp(cls) -> None:
         # Keep reference to first two movies
-        self.m1: Movie = Movie.objects.create(title="Test 1")
-        self.m2: Movie = Movie.objects.create(title="Test 2")
+        cls.m1: Movie = Movie.objects.create(title="Test 1")
+        cls.m2: Movie = Movie.objects.create(title="Test 2")
 
         # Create rest of movies
-        for n in range(self.movie_count - 2):
-            setattr(self, f'm{n+2}', Movie.objects.create(title=f"Test {n+2}"))
+        for n in range(cls.movie_count - 2):
+            setattr(cls, f'm{n + 2}', Movie.objects.create(title=f"Test {n + 2}"))
 
     def test_fetch_all_returns_correct_count(self) -> None:
         res = self.client.get(f"/movies/").json()

@@ -21,16 +21,18 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 # install python dependencies
 COPY /pyproject.toml .
 COPY /poetry.lock .
-RUN /root/.local/bin/poetry update && /root/.local/bin/poetry install
+COPY /Makefile .
 
 # Update poetry path and configure Django settings
 ENV PATH="${PATH}:/root/.local/bin"
 
-# copy project
-COPY . .
+# Install dependencies
+RUN poetry update && poetry install
 
-RUN /root/.local/bin/poetry run ./manage.py migrate
+# Copy project files. We do this after install so that changes to files don't require install again.
+COPY . .
+RUN poetry run ./manage.py migrate
 
 # run at port 8000
 EXPOSE 8000
-CMD /root/.local/bin/poetry run ./manage.py runserver 0.0.0.0:8000
+CMD poetry run ./manage.py runserver 0.0.0.0:8000

@@ -1,16 +1,10 @@
 version: "3.9"
 services:
-  web-dev:
+  web-prod:
+    container_name: spooky-list__web-prod
     build:
       context: .
       dockerfile: Dockerfile
-      target: dev
-    container_name: spooky-list__web-dev
-    restart: always
-    volumes:
-      - ./:/app
-      - /app/node_modules
-      - /app/.next
     ports:
       - "3000:3000"
   backend:
