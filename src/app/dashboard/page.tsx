@@ -10,7 +10,7 @@ const DashboardPage = (): JSX.Element => {
           <HeroSection
               headerText={"What's your favorite scary movie?"}
               bodyText={'Lorem ipsum dolor sit amet consectetur. Justo dignissim neque id duis purus amet at ullamcorper phasellus.'}
-              image={'/sillyGhosts.png'}
+              image={'/ghostface.svg'}
               altText={'Two Cartoon Ghosts'}
               isFlipped={false}
           />

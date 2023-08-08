@@ -1,8 +1,12 @@
+import datetime
+import time
+
 from django.db import models
 
 
 # Create your models here.
 class Person(models.Model):
+    id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     first_name = models.CharField()
     last_name = models.CharField()
 
@@ -11,9 +15,10 @@ class Person(models.Model):
 
 
 class Movie(models.Model):
+    id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, default="")
-    release_date = models.DateField(blank=True, default=None)
+    release_date = models.DateField(blank=True, default=datetime.date.min)
     length_minutes = models.IntegerField(blank=True, default=0)
     poster = models.URLField(blank=True, default="")
     amazon_link = models.URLField(blank=True, default="")

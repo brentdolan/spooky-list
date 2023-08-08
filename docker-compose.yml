@@ -37,6 +37,6 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DATABASE=spooky_movies
+      - POSTGRES_DATABASE=api
     ports:
       - '5432:5432'

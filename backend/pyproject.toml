@@ -9,8 +9,18 @@ readme = "README.md"
 python = "^3.11"
 django = "^4.2.4"
 psycopg2 = "^2.9.7"
+djangorestframework = "^3.14.0"
+markdown = "^3.4.4"
+django-filter = "^23.2"
+drf-yasg = "^1.21.7"
+pytest-django = "^4.5.2"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "api.settings"
+# -- recommended but optional:
+python_files = ["test_*.py", "*_test.py", "tests/*.py"]

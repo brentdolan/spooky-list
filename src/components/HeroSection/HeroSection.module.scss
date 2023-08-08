@@ -4,7 +4,7 @@
   grid-template-areas: 'header header' 'body-text body-text' 'button image';
 
   h2 {
-    font: var(--headingfont);
+    font-family: var(--headingFont);
     font-size: 3rem;
     font-weight: 800;
     grid-area: header;
@@ -26,7 +26,7 @@
 }
 
 .bodyText {
-  font: var(--primaryfont);
+  font-family: var(--primaryFont);
   font-size: 1.5rem;
   font-weight: 500;
   grid-area: body-text;
@@ -41,10 +41,12 @@
 
 @media (min-width: 768px) {
   .heroSection {
+    grid-template-columns: 1fr 2fr;
     grid-template-areas: 'image header' 'image body-text' 'image button';
   }
 
   .heroSection.flipped {
+    grid-template-columns: 2fr 1fr;
     grid-template-areas: 'header image' 'body-text image' 'button image';
   }
 }

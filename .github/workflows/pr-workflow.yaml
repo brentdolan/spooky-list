@@ -2,14 +2,14 @@ name: PR Workflow
 run-name: Running tests on PR
 on: [pull_request]
 jobs:
-  Test:
+  web-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: npm i
       - run: npm run test
-  Lint:
+  web-lint:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code

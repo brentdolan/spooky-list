@@ -4,8 +4,11 @@
     --pumpkin: #F6B68D;
     --black-cat: #1E1E1E;
     --ghost: #F9FFFA;
-    /* --headingFont comes from @/src/app/layout.tsx */
-    /* --primaryFont comes from @/src/app/layout.tsx */
+    /* These fonts are declared in @/src/app/layout.tsx
+       However, we add them here to make code completion see them.
+     */
+    --headingFont: var(--headingFont);
+    --primaryFont: var(--primaryFont);
 }
 .container {
     display: grid;

@@ -29,8 +29,8 @@ const RootLayout = ({
   children: React.ReactNode
 }): JSX.Element => {
   return (
-      <html lang="en" className={`${poppins.className} ${epilogue.className}`}>
-          <body className={`${poppins.className} ${epilogue.className} ${inter.className}`}>{children}</body>
+      <html lang="en">
+          <body className={`${poppins.variable} ${epilogue.variable} ${inter.className}`}>{children}</body>
       </html>
   )
 }
