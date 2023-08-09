@@ -2,6 +2,7 @@
 import React from 'react'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { HeroSection } from '@/components/HeroSection/HeroSection'
+import { CardList } from '@/components/CardList/CardList'
 
 const DashboardPage = (): JSX.Element => {
   return (
@@ -14,6 +15,7 @@ const DashboardPage = (): JSX.Element => {
               altText={'Two Cartoon Ghosts'}
               isFlipped={false}
           />
+          <CardList/>
       </div>
   )
 }

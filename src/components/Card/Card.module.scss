@@ -1,0 +1,16 @@
+.card {
+ background-color: var(--pumpkin);
+ width: 100%;
+ border: 3px solid var(--black-cat);
+ border-radius: 10px;
+ font-family: var(--primaryFont);
+
+ * {
+  margin-inline: 1.5rem;
+ }
+
+ h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+ }
+}
