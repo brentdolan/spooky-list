@@ -28,7 +28,6 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
   return (
       <>
           <AppBar component={'nav'} className={styles.navBar} data-testid={'nav-bar'}>
-
               <h1 className={styles.navTitle}>Spooky</h1>
               <Box className={styles.navLinks} sx={{ display: { xs: 'none', md: 'flex' } }}>
                   {navLinks.map(link => (
@@ -80,7 +79,6 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
                   <h1 className={styles.navTitle}>Spooky</h1>
                   {navLinks.map(link => (
                       <a
-                          data-testid={`nav-link-${link.text}`}
                           className={`${styles.navText} ${(link.text === currentPage) ? styles.active : ''}`}
                           href={link.link}
                           key={link.link}
