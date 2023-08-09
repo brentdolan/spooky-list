@@ -3,6 +3,37 @@ import React from 'react'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { HeroSection } from '@/components/HeroSection/HeroSection'
 import { CardList } from '@/components/CardList/CardList'
+import { MovieList } from '@/components/MovieList/MovieList'
+
+const movies = [
+  {
+    id: 2,
+    title: 'Jeepers Creepers',
+    poster: 'https://m.media-amazon.com/images/I/61XjzSQGmcL._AC_UF894,1000_QL80_.jpg'
+  }, {
+    id: 3,
+    title: 'Scream',
+    poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
+  },
+  {
+    id: 2,
+    title: 'Jeepers Creepers',
+    poster: 'https://m.media-amazon.com/images/I/61XjzSQGmcL._AC_UF894,1000_QL80_.jpg'
+  }, {
+    id: 3,
+    title: 'Scream',
+    poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
+  },
+  {
+    id: 2,
+    title: 'Jeepers Creepers',
+    poster: 'https://m.media-amazon.com/images/I/61XjzSQGmcL._AC_UF894,1000_QL80_.jpg'
+  }, {
+    id: 3,
+    title: 'Scream',
+    poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
+  }
+]
 
 const DashboardPage = (): JSX.Element => {
   return (
@@ -15,7 +46,9 @@ const DashboardPage = (): JSX.Element => {
               altText={'Two Cartoon Ghosts'}
               isFlipped={false}
           />
-          <CardList/>
+          <CardList />
+          <MovieList title={'Most Popular'} movieList={movies} />
+          <MovieList title={'Family Frights'} movieList={movies} />
       </div>
   )
 }
