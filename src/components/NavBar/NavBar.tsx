@@ -4,6 +4,7 @@ import { MenuRounded } from '@mui/icons-material'
 import styles from './NavBar.module.scss'
 import { Button } from '@/components/Button/Button'
 import { AppBar, Box, Drawer, IconButton } from '@mui/material'
+import Link from 'next/link'
 
 interface NavBarProps {
   currentPage: string
@@ -12,7 +13,6 @@ interface NavBarProps {
 export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const navLinks = [
-    { link: '/dashboard', text: 'Dashboard' },
     { link: '/about', text: 'About' },
     { link: '/catalog', text: 'Catalog' }
   ]
@@ -27,18 +27,21 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
 
   return (
       <>
+          {/* THIS SECTION IS THE DESKTOP SECTION OF THE NAVBAR */}
           <AppBar component={'nav'} className={styles.navBar} data-testid={'nav-bar'}>
-              <h1 className={styles.navTitle}>Spooky</h1>
+              <h1>
+                  <Link className={`${styles.navTitle} ${(currentPage === '/') ? styles.active : ''}`} href={'/'}>Spooky</Link>
+              </h1>
               <Box className={styles.navLinks} sx={{ display: { xs: 'none', md: 'flex' } }}>
                   {navLinks.map(link => (
-                      <a
+                      <Link
                           data-testid={`nav-link-${link.text}`}
                           className={`${styles.navText} ${(link.text === currentPage) ? styles.active : ''}`}
                           href={link.link}
                           key={link.link}
                       >
                           {link.text}
-                      </a>
+                      </Link>
                   ))}
               </Box>
               <Box className={styles.buttonWrapper} sx={{ display: { xs: 'none', md: 'block' } }}>
@@ -53,8 +56,8 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
               >
                   <MenuRounded />
               </IconButton>
-
           </AppBar>
+          {/* THIS SECTION IS THE DRAWER OF THE NAVBAR ON MOBILE */}
           <Box component="nav">
               <Drawer
                   // container={container}
@@ -70,21 +73,23 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
                     '& .MuiDrawer-paper': {
                       boxSizing: 'border-box',
                       width: '70%',
-                      paddingInline: '2rem',
+                      padding: '1em 1.5em',
                       backgroundColor: 'var(--grimace)',
                       borderRight: '3px solid var(--black-cat)'
                     }
                   }}
               >
-                  <h1 className={styles.navTitle}>Spooky</h1>
+                  <h1>
+                      <Link className={`${styles.navTitle} ${(currentPage === '/') ? styles.active : ''}`} href={'/'}>Spooky</Link>
+                  </h1>
                   {navLinks.map(link => (
-                      <a
+                      <Link
                           className={`${styles.navText} ${(link.text === currentPage) ? styles.active : ''}`}
                           href={link.link}
                           key={link.link}
                       >
                           {link.text}
-                      </a>
+                      </Link>
                   ))}
                   <Box className={styles.buttonWrapper} >
                       <Button text={'Sign Up'} onClick={redirectToSignUp} />

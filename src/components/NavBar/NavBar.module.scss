@@ -17,8 +17,10 @@
 .navTitle {
   font-size: 2.25rem;
   margin-right: 2rem;
-  font-family: var(--headingfont);
+  font-family: var(--headingFont);
   margin-block: 1rem;
+  text-decoration: none;
+  color: var(--black-cat);
 }
 
 .navText {
@@ -37,10 +39,6 @@
 
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
   background-color: var(--grimace);
-}
-
-.drawer {
-  padding-inline: 2rem;
 }
 
 @media (min-width: 768px) {
