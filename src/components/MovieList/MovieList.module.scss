@@ -3,6 +3,7 @@
   display: flex;
   gap: .75rem;
   overflow-x: scroll;
+  margin-bottom: 3rem;
 }
 
 .imageContainer {
@@ -26,8 +27,9 @@
     display: grid;
     grid-template-columns: repeat(6,1fr);
     overflow-x: visible;
+    margin-bottom: 6rem;
   }
-  
+
   .imageContainer {
     img {
       width: 100%;

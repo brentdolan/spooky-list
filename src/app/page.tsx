@@ -16,20 +16,20 @@ const movies = [
     poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
   },
   {
-    id: 2,
+    id: 5,
     title: 'Jeepers Creepers',
     poster: 'https://m.media-amazon.com/images/I/61XjzSQGmcL._AC_UF894,1000_QL80_.jpg'
   }, {
-    id: 3,
+    id: 8,
     title: 'Scream',
     poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
   },
   {
-    id: 2,
+    id: 22,
     title: 'Jeepers Creepers',
     poster: 'https://m.media-amazon.com/images/I/61XjzSQGmcL._AC_UF894,1000_QL80_.jpg'
   }, {
-    id: 3,
+    id: 34,
     title: 'Scream',
     poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
   }

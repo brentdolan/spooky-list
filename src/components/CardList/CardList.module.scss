@@ -3,13 +3,16 @@
   display: grid;
   grid-template-rows: repeat(3,12rem);
   gap: 2rem;
+  margin-block: 3rem;
 
   @media (min-width: 768px) {
     grid-template-rows: auto;
     grid-template-columns: repeat(3,1fr);
+    margin-block: 6rem;
   }
 
 }
+
 
 
 
