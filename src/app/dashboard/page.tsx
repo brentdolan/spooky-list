@@ -1,10 +1,10 @@
 'use client'
 import React from 'react'
 
-const LandingPage = (): JSX.Element => {
+const DashboardPage = (): JSX.Element => {
   return (
-      <div data-testid={'landing-page'} />
+      <div data-testid={'dashboard'} />
   )
 }
 
-export default LandingPage
+export default DashboardPage
