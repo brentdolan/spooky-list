@@ -5,6 +5,6 @@ import LandingPage from '@/app/page'
 describe('Landing Page', () => {
   it('renders the page ', () => {
     render(<LandingPage />)
-    expect(screen.getByTestId('dashboard')).toBeVisible()
+    expect(screen.getByTestId('landing-page')).toBeVisible()
   })
 })
