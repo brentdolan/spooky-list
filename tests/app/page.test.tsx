@@ -1,10 +1,10 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import DashboardPage from '@/app/dashboard/page'
+import LandingPage from '@/app/page'
 
-describe('Dashboard Page', () => {
+describe('Landing Page', () => {
   it('renders the page ', () => {
-    render(<DashboardPage />)
+    render(<LandingPage />)
     expect(screen.getByTestId('dashboard')).toBeVisible()
   })
 })
