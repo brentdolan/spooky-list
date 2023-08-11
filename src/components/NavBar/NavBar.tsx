@@ -30,7 +30,7 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
           {/* THIS SECTION IS THE DESKTOP SECTION OF THE NAVBAR */}
           <AppBar component={'nav'} className={styles.navBar} data-testid={'nav-bar'}>
               <h1>
-                  <Link data-testid={'landing-page'} className={`${styles.navTitle} ${(currentPage === '/') ? styles.active : ''}`} href={'/'}>Spooky</Link>
+                  <Link data-testid={'landing-page-nav'} className={`${styles.navTitle} ${(currentPage === '/') ? styles.active : ''}`} href={'/'}>Spooky</Link>
               </h1>
               <Box className={styles.navLinks} sx={{ display: { xs: 'none', md: 'flex' } }}>
                   {navLinks.map(link => (

@@ -11,7 +11,7 @@ describe('NavBar', () => {
     it('Shows the correct nav link as active', () => {
       render(<NavBar currentPage="LandingPage" />)
 
-      expect(screen.getByTestId('landing-page').className).toContain('navTitle')
+      expect(screen.getByTestId('landing-page-nav').className).toContain('navTitle')
     })
 
     it('Shows non-active nav links as non-active', () => {
