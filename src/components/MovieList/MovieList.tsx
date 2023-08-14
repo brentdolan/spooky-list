@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './MovieList.module.scss'
+import Link from 'next/link'
 
 interface MovieListProps {
   title: string
@@ -19,9 +20,9 @@ export const MovieList: React.FC<MovieListProps> = ({ title, movieList }) => {
           <div className={styles.movieList}>
               {movieList.map(movie => (
                   <div className={styles.imageContainer} data-testid={`movie-${movie.title}`} key={movie.id}>
-                      <a href={'/movie/movie/1'}>
+                      <Link href={`/movies/${movie.id}`}>
                           <img alt={movie.title} src={movie.poster}/>
-                      </a>
+                      </Link>
                   </div>
               ))}
           </div>
