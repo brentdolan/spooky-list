@@ -34,13 +34,12 @@ const movies = [
     poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
   }
 ]
-
 const LandingPage = (): JSX.Element => {
   return (
       <div data-testid={'landing-page'}>
           <NavBar currentPage={'/'} />
           <HeroSection
-              headerText={"What's your favorite scary movie?"}
+              headerText={"What's your favorite scary movies?"}
               bodyText={'Lorem ipsum dolor sit amet consectetur. Justo dignissim neque id duis purus amet at ullamcorper phasellus.'}
               image={'/ghostface.svg'}
               altText={'Two Cartoon Ghosts'}
