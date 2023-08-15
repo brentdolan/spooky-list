@@ -1,62 +1,40 @@
-'use client'
 import React from 'react'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { MovieList } from '@/components/MovieList/MovieList'
 
-const movies = [
-  {
-    id: 2,
-    title: 'Jeepers Creepers',
-    poster: 'https://m.media-amazon.com/images/I/61XjzSQGmcL._AC_UF894,1000_QL80_.jpg'
-  }, {
-    id: 3,
-    title: 'Scream',
-    poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
-  },
-  {
-    id: 5,
-    title: 'Jeepers Creepers',
-    poster: 'https://m.media-amazon.com/images/I/61XjzSQGmcL._AC_UF894,1000_QL80_.jpg'
-  }, {
-    id: 8,
-    title: 'Scream',
-    poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
-  },
-  {
-    id: 22,
-    title: 'Jeepers Creepers',
-    poster: 'https://m.media-amazon.com/images/I/61XjzSQGmcL._AC_UF894,1000_QL80_.jpg'
-  }, {
-    id: 34,
-    title: 'Scream',
-    poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
-  }
-]
+interface GetMovieResponse {
+  url: string
+  id: number
+  title: string
+  description: string
+  release_date: string
+  rating: string
+  length_minutes: number
+  poster: string
+  amazon_link: string
+  trigger_warning: string
+  where_to_watch: string[]
+  genres: string[]
+  cast_and_crew: string[]
+}
+interface GetMoviesResponse {
+  count: number
+  next: string
+  previous?: string
+  results: GetMovieResponse[]
+}
+const getMovies = async (): Promise<GetMoviesResponse> => {
+  const response = await fetch('http://host.docker.internal:8000/movies')
 
-const genreLists = [
-  {
-    name: 'Popular',
-    movies
-  },
-  {
-    name: 'Family Frights',
-    movies
-  },
-  {
-    name: 'Thrillers',
-    movies
-  }
+  return await response.json()
+}
+const Page: React.FC = async () => {
+  const movies = await getMovies()
 
-]
-
-const Page = (): JSX.Element => {
   return (
       <div data-testid={'catalog'}>
           <NavBar currentPage={'Catalog'} />
-          {genreLists.map(genreList => (
-              <MovieList title={genreList.name} movieList={genreList.movies} key={genreList.name}/>
-          )
-          )}
+          <MovieList movieList={movies.results} title={'All Movies'}/>
       </div>
   )
 }

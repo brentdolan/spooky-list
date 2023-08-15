@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-f9*zjek&$irpqqis!9cis=a59zmc_8z5r-x-vkg*tcb(u^5z=^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["host.docker.internal", "localhost"]
 
 
 # Application definition
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 20
+    'PAGE_SIZE': 24
 }
 
 USER = os.environ.get("DB_USER", "postgres")
