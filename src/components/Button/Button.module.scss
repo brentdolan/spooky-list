@@ -2,11 +2,19 @@
     font-family: var(--primaryFont);
     font-weight: 600;
     color: var(--black-cat);
-    font-size: 18px;
+    font-size: 14px;
     background-color: var(--slime);
     border-radius: 8px;
     border: 3px solid var(--black-cat);
-    padding: .5rem 2.5rem;
+    padding: .5rem 2rem;
     cursor: pointer;
     height: min-content;
+    width: min-content;
+    white-space: nowrap;
+}
+
+@media (min-width: 375px) {
+    .button {
+        font-size: 18px;
+    }
 }

@@ -1,18 +1,26 @@
 .navBar {
   display: flex;
+  flex-flow: row;
   gap: 1rem;
   align-items: center;
-  margin-inline: 4.5em;
+  position: relative;
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--black-cat);
 }
 
 .buttonWrapper {
-  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: 1rem;
 }
 
 .navTitle {
   font-size: 2.25rem;
   margin-right: 2rem;
-  font-family: var(--headingfont);
+  font-family: var(--headingFont);
+  margin-block: 1rem;
+  text-decoration: none;
+  color: var(--black-cat);
 }
 
 .navText {
@@ -22,9 +30,26 @@
   text-decoration: none;
   border-bottom: 6px solid transparent;
   padding-top: 6px;
+  width: min-content;
 }
 
 .active {
   border-bottom: 6px solid var(--pumpkin);
+}
+
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+  background-color: var(--grimace);
+}
+
+@media (min-width: 768px) {
+
+  .buttonWrapper {
+    margin-left: auto;
+  }
+
+  .navLinks {
+    display: flex;
+    gap: 1rem;
+  }
 }
 

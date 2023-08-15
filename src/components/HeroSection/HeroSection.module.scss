@@ -2,12 +2,17 @@
   width: 100%;
   display: grid;
   grid-template-areas: 'header header' 'body-text body-text' 'button image';
+  grid-template-columns: 2fr 1fr;
+  margin-block: 3rem;
+
 
   h2 {
     font-family: var(--headingFont);
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
     grid-area: header;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
   }
 
   button {
@@ -19,23 +24,23 @@
 .imageContainer{
   width: 100%;
   grid-area: image;
+  display: flex;
 
-  img{
-    width: 100%;
+  img {
+    margin-left: auto;
+    width: 85%;
   }
 }
 
 .bodyText {
   font-family: var(--primaryFont);
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.25rem;
   grid-area: body-text;
 }
 
 @media (min-width: 550px) {
   .heroSection > button {
-    margin-top: 3rem;
-    margin-bottom: auto;
+    margin-top: 2rem;
   }
 }
 
@@ -49,6 +54,43 @@
     grid-template-columns: 2fr 1fr;
     grid-template-areas: 'header image' 'body-text image' 'button image';
   }
+  .imageContainer > img {
+    margin-right: auto;
+  }
+
 }
 
+@media (min-width: 1024px) {
+  .heroSection {
+    margin-block: 6rem;
+
+    h2 {
+      font-size: 3rem;
+    }
+  }
+  .bodyText {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .heroSection {
+    .bodyText {
+      width: 78%;
+    }
+
+    button {
+      margin-top: 0;
+    }
+
+    h2 {
+      margin-bottom: 0rem;
+      max-height: 4rem;
+    }
+  }
+
+  .imageContainer > img {
+    width: 80%;
+  }
+}
 

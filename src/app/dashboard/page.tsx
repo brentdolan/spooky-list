@@ -1,7 +1,5 @@
 'use client'
 import React from 'react'
-import { NavBar } from '@/components/NavBar/NavBar'
-import { HeroSection } from '@/components/HeroSection/HeroSection'
 
 const DashboardPage = (): JSX.Element => {
   return (

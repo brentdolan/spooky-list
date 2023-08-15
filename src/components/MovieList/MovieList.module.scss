@@ -1,0 +1,43 @@
+.movieList {
+  width: 100%;
+  display: flex;
+  gap: .75rem;
+  overflow-x: scroll;
+  margin-bottom: 3rem;
+}
+
+.imageContainer {
+  display: flex;
+  border: 3px solid var(--black-cat);
+  border-radius: 10px;
+
+  img {
+    width: 7rem;
+    height: 100%;
+  }
+}
+
+.listTitle {
+  font-family: var(--headingFont);
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .movieList {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    overflow-x: visible;
+    margin-bottom: 6rem;
+  }
+
+  .imageContainer {
+    img {
+      width: 100%;
+    }
+  }
+
+  .listTitle {
+    font-size: 2.5rem;
+  }
+}
