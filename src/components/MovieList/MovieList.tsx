@@ -20,7 +20,7 @@ export const MovieList: React.FC<MovieListProps> = ({ title, movieList }) => {
           <div className={styles.movieList}>
               {movieList.map(movie => (
                   <div className={styles.imageContainer} data-testid={`movie-${movie.title}`} key={movie.id}>
-                      <Link href={`/movies/${movie.id}`}>
+                      <Link href={`/catalog/${movie.id}`}>
                           <img alt={movie.title} src={movie.poster}/>
                       </Link>
                   </div>
