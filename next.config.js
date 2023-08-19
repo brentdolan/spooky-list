@@ -8,6 +8,9 @@ const nextConfig = {
       aggregateTimeout: 300,
     },
   }),
+  experimental: {
+    serverActions: true
+  }
 }
 
 module.exports = nextConfig

@@ -2,7 +2,7 @@ import React from 'react'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { MovieList } from '@/components/MovieList/MovieList'
 
-interface GetMovieResponse {
+export interface GetMovieResponse {
   url: string
   id: number
   title: string
@@ -17,7 +17,7 @@ interface GetMovieResponse {
   genres: string[]
   cast_and_crew: string[]
 }
-interface GetMoviesResponse {
+export interface GetMoviesResponse {
   count: number
   next: string
   previous?: string

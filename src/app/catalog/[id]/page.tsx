@@ -1,27 +1,27 @@
-'use client'
 import React from 'react'
 import { NavBar } from '@/components/NavBar/NavBar'
 import styles from './movieDetailPage.module.scss'
-import { Button } from '@/components/Button/Button'
-import { BookmarkOutlined, PlaylistAdd } from '@mui/icons-material'
-import { IconButton, Tooltip } from '@mui/material'
+// import { Button } from '@/components/Button/Button'
+// import { BookmarkOutlined, PlaylistAdd } from '@mui/icons-material'
+// import { IconButton, Tooltip } from '@mui/material'
+import { type GetMovieResponse } from '@/app/catalog/page'
 
-const movie = {
-  url: 'http://localhost:8000/movies/5/',
-  id: 5,
-  title: 'Alvin and the Chipmunks Meet the Wolfman',
-  description: 'When Alvin discovers that his neighbor is a werewolf, he begins an exhilarating race against time before the full moon arrives. But the real terror will come when Theodore starts acting weird too.',
-  release_date: '2000-08-29',
-  rating: 'R',
-  length_minutes: 77,
-  poster: 'https://m.media-amazon.com/images/M/MV5BMzM1N2I1NzktMjBlYi00OGFkLTg5N2YtMjJmZDExNGM3NTA5XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg',
-  amazon_link: '',
-  trigger_warning: '',
-  where_to_watch: [],
-  genres: ['Body Horror', 'Burlesque'],
-  cast_and_crew: []
+const getMovie = async (id: string): Promise<GetMovieResponse> => {
+  const response = await fetch(`http://host.docker.internal:8000/movies/${id}`)
+
+  return await response.json()
 }
-const Page: React.FC = () => {
+
+interface MovieDetailProps {
+  params: {
+    id: string
+  }
+}
+
+const Page: React.FC<MovieDetailProps> = async ({ params }) => {
+  const id = params.id
+  const movie = await getMovie(id)
+
   return (
       <div data-testid={'movies-details'}>
           <NavBar currentPage={'Catalog'} />
@@ -37,19 +37,19 @@ const Page: React.FC = () => {
                           <span><strong>Runtime:</strong> {movie.length_minutes} minutes</span>
                       </div>
                   </div>
-                  <div className={styles.buttons}>
-                      <Button variant={'secondary'} onClick={() => {}}>Mark as Watched</Button>
-                      <Tooltip title={'Bookmark'}>
-                          <IconButton>
-                              <BookmarkOutlined sx={{ fontSize: '2rem' }}/>
-                          </IconButton>
-                      </Tooltip>
-                      <Tooltip title={'Add to List'}>
-                          <IconButton>
-                              <PlaylistAdd sx={{ fontSize: '2rem' }}/>
-                          </IconButton>
-                      </Tooltip>
-                  </div>
+                  {/* <div className={styles.buttons}> */}
+                  {/*    <Button variant={'secondary'}>Mark as Watched</Button> */}
+                  {/*    <Tooltip title={'Bookmark'}> */}
+                  {/*        <IconButton> */}
+                  {/*            <BookmarkOutlined sx={{ fontSize: '2rem' }}/> */}
+                  {/*        </IconButton> */}
+                  {/*    </Tooltip> */}
+                  {/*    <Tooltip title={'Add to List'}> */}
+                  {/*        <IconButton> */}
+                  {/*            <PlaylistAdd sx={{ fontSize: '2rem' }}/> */}
+                  {/*        </IconButton> */}
+                  {/*    </Tooltip> */}
+                  {/* </div> */}
 
                   <p>{movie.description}</p>
               </div>
