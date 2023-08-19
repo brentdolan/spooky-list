@@ -3,7 +3,7 @@ import React from 'react'
 import { MenuRounded } from '@mui/icons-material'
 import styles from './NavBar.module.scss'
 import { Button } from '@/components/Button/Button'
-import { AppBar, Box, Drawer, IconButton } from '@mui/material'
+import { Box, Drawer, IconButton } from '@mui/material'
 import Link from 'next/link'
 
 interface NavBarProps {
@@ -28,7 +28,7 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
   return (
       <>
           {/* THIS SECTION IS THE DESKTOP SECTION OF THE NAVBAR */}
-          <AppBar component={'nav'} className={styles.navBar} data-testid={'nav-bar'}>
+          <Box component={'nav'} className={styles.navBar} data-testid={'nav-bar'}>
               <h1>
                   <Link data-testid={'landing-page-nav'} className={`${styles.navTitle} ${(currentPage === '/') ? styles.active : ''}`} href={'/'}>Spooky</Link>
               </h1>
@@ -56,7 +56,7 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
               >
                   <MenuRounded />
               </IconButton>
-          </AppBar>
+          </Box>
           {/* THIS SECTION IS THE DRAWER OF THE NAVBAR ON MOBILE */}
           <Box component="nav">
               <Drawer

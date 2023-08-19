@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './HeroSection.module.scss'
 import { Button } from '@/components/Button/Button'
+import Image from 'next/image'
+
 interface HeroSectionProps {
   headerText: string
   bodyText: string
@@ -16,7 +18,7 @@ export const HeroSection = ({ headerText, bodyText, image, altText, isFlipped }:
           <div className={styles.bodyText}>{bodyText}</div>
           <Button onClick={() => {}}>Start Watching</Button>
           <div className={styles.imageContainer}>
-              <img alt={altText} src={image}/>
+              <Image alt={altText} src={image} style={{ width: '80%', height: 'auto' }} width={12} height={12}/>
           </div>
       </div>
   )
