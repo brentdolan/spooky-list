@@ -20,6 +20,10 @@ class Person(models.Model):
         through="MovieCastAndCrew"
     )
 
+    def full_name(self):
+        full_name = self.__str__()
+        return full_name
+
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
@@ -57,21 +61,56 @@ class Movie(models.Model):
         through="MovieCastAndCrew"
     )
 
-    def other_recommendations(self):
-        genre_other_movies = MovieGenre.objects.exclude(movie_id=self.id)
-        director_other_movies = MovieCastAndCrew.objects.filter(role="director").exclude(movie=self.id).all()
+    def director(self):
+        return (
+            MovieCastAndCrew.objects
+            .filter(
+                movie_id=self.id,
+                role="director"
+            )
+            .first()
+        )
 
+    def other_recommendations(self):
         recommendation_ids = []
+        gallery_row_length = 6
+
+        # Fetch other movies in Genre
+        genre_ids = [genre.id for genre in self.genres.all()]
+        genre_other_movies = (
+            MovieGenre.objects.
+            filter(genre_id__in=genre_ids).
+            exclude(movie_id=self.id).
+            all()[:gallery_row_length]
+        )
+
+        # Add to recommendations list
         for movie_genre in genre_other_movies:
             recommendation_ids.append(movie_genre.movie_id)
 
-        for movie_director in director_other_movies:
-            recommendation_ids.append(movie_director.movie)
+        # Fetch other movies by Director
+        director_other_movies = []
+        if self.director() is not None:
+            director_id = self.director().id
+            director_other_movies = (
+                MovieCastAndCrew.objects.
+                filter(
+                    role="director",
+                    person_id=director_id
+                ).
+                exclude(movie_id=self.id).
+                all()[:gallery_row_length]
+            )
 
+        # Add to recommendations list
+        for movie_director in director_other_movies:
+            recommendation_ids.append(movie_director.movie_id)
+
+        # Fetch the full movie objects from the list of IDs
         return [movie for movie in (
-            Movie.objects
-            .filter(id__in=recommendation_ids)
-            .all()
+            Movie.objects.
+            filter(id__in=recommendation_ids).
+            all()[:gallery_row_length]
         )]
 
     def __str__(self):
