@@ -45,7 +45,7 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
                   ))}
               </Box>
               <Box className={styles.buttonWrapper} sx={{ display: { xs: 'none', md: 'block' } }}>
-                  <Button text={'Sign Up'} onClick={redirectToSignUp} />
+                  <Button onClick={redirectToSignUp}>Sign Up</Button>
               </Box>
               <IconButton
                   color="inherit"
@@ -92,7 +92,7 @@ export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
                       </Link>
                   ))}
                   <Box className={styles.buttonWrapper} >
-                      <Button text={'Sign Up'} onClick={redirectToSignUp} />
+                      <Button onClick={redirectToSignUp}>Sign Up</Button>
                   </Box>
               </Drawer>
           </Box>

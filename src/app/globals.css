@@ -4,6 +4,7 @@
     --pumpkin: #F6B68D;
     --black-cat: #1E1E1E;
     --ghost: #F9FFFA;
+    --grimaceLight: #D9D6F1;
     /* These fonts are declared in @/src/app/layout.tsx
        However, we add them here to make code completion see them.
      */

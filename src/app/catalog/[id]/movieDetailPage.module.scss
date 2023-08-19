@@ -28,6 +28,16 @@ font-family: var(--primaryFont);
   }
 }
 
+.buttons {
+  display: flex;
+  gap: 1rem;
+  margin-block: 1.5rem;
+
+  :first-child {
+    margin-right: auto;
+  }
+}
+
 @media (min-width: 768px) {
   .details {
     display: grid;

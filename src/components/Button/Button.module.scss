@@ -13,6 +13,21 @@
     white-space: nowrap;
 }
 
+.secondary {
+    background-color: var(--grimaceLight);
+}
+
+.minimal {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin-block: auto;
+
+    svg {
+        font-size: 2rem;
+    }
+}
+
 @media (min-width: 375px) {
     .button {
         font-size: 18px;

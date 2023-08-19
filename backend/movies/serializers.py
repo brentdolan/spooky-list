@@ -10,7 +10,7 @@ class RecommendationSerializer(serializers.ModelSerializer):
 
 class MovieSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    other_recommendations = RecommendationSerializer(many=True)
+#     other_recommendations = RecommendationSerializer(many=True)
     genres = serializers.SlugRelatedField(
         many=True,
         read_only=True,

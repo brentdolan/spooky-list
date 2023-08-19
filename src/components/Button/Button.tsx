@@ -1,15 +1,24 @@
 'use client'
-import React from 'react'
+import React, { type ReactNode } from 'react'
 import styles from './Button.module.scss'
 
 interface ButtonProps {
-  text: string
+  children: ReactNode
   onClick: () => void
+  variant?: string
 }
-export const Button = ({ text, onClick }: ButtonProps): JSX.Element => {
+export const Button: React.FC<ButtonProps> = ({ onClick, children, variant }) => {
+  let variantClass = styles.primary
+  if (variant === 'secondary') {
+    variantClass = styles.secondary
+  }
+  if (variant === 'minimal') {
+    variantClass = styles.minimal
+  }
+
   return (
-      <button onClick={onClick} data-testid="button" className={styles.button}>
-          {text}
+      <button onClick={onClick} data-testid="button" className={`${styles.button} ${variantClass}`}>
+          {children}
       </button>
   )
 }
