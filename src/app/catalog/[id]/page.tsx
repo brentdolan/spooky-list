@@ -3,7 +3,7 @@ import React from 'react'
 import { NavBar } from '@/components/NavBar/NavBar'
 import styles from './movieDetailPage.module.scss'
 import { Button } from '@/components/Button/Button'
-import { Bookmark, BookmarkOutlined, PlaylistAdd } from '@mui/icons-material'
+import { BookmarkOutlined, PlaylistAdd } from '@mui/icons-material'
 
 const movie = {
   url: 'http://localhost:8000/movies/5/',
