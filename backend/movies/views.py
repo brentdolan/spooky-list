@@ -19,10 +19,3 @@ def query_param(view_set, param_name: str = ""):
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
-
-    def get_queryset(self) -> QuerySet:
-        if query_param(self, "group_by") == "category":
-            # TODO: Group by categories
-            return Movie.objects.all()
-        else:
-            return Movie.objects.all()

@@ -2,6 +2,7 @@ import datetime
 import time
 
 from django.db import models
+from django.db.models import Q
 
 cast_filter = ~models.Q(role="director")
 
@@ -55,6 +56,23 @@ class Movie(models.Model):
         blank=True,
         through="MovieCastAndCrew"
     )
+
+    def other_recommendations(self):
+        genre_other_movies = MovieGenre.objects.exclude(movie_id=self.id)
+        director_other_movies = MovieCastAndCrew.objects.filter(role="director").exclude(movie=self.id).all()
+
+        recommendation_ids = []
+        for movie_genre in genre_other_movies:
+            recommendation_ids.append(movie_genre.movie_id)
+
+        for movie_director in director_other_movies:
+            recommendation_ids.append(movie_director.movie)
+
+        return [movie for movie in (
+            Movie.objects
+            .filter(id__in=recommendation_ids)
+            .all()
+        )]
 
     def __str__(self):
         if Movie.objects.filter(title=self.title).count() > 1:
