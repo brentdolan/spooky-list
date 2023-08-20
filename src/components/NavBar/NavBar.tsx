@@ -1,10 +1,11 @@
 'use client'
-import React from 'react'
+import React, { useContext } from 'react'
 import { MenuRounded } from '@mui/icons-material'
 import styles from './NavBar.module.scss'
 import { Button } from '@/components/Button/Button'
 import { Box, Drawer, IconButton } from '@mui/material'
 import Link from 'next/link'
+import { SessionContext } from '@/providers/SessionProvider'
 
 interface NavBarProps {
   currentPage: string
@@ -12,6 +13,8 @@ interface NavBarProps {
 
 export const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
+  const val = useContext(SessionContext)
+  console.log(val)
   const navLinks = [
     { link: '/about', text: 'About' },
     { link: '/catalog', text: 'Catalog' }
