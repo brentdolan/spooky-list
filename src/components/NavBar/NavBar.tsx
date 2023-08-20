@@ -10,7 +10,7 @@ interface NavBarProps {
   currentPage: string
 }
 
-export const NavBar = ({ currentPage }: NavBarProps): JSX.Element => {
+export const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const navLinks = [
     { link: '/about', text: 'About' },

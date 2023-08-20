@@ -2,7 +2,7 @@ FROM node:18-alpine AS base
 LABEL authors="stephen"
 
 FROM base AS deps
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat g++ make py3-pip
 WORKDIR /app
 
 COPY package.json .

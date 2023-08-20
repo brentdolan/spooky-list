@@ -175,6 +175,7 @@ def save_movies(movie_list):
             poster=movie.get("poster"),
             amazon_link=movie.get("amazon_link"),
             trigger_warning=movie.get("trigger_warning", ""),
+            rating=movie.get("rating")
         )
 
         movie_to_add.save()
