@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { MovieList } from '@/components/MovieList/MovieList'
+import { getMovies } from '@/helpers/fetch'
 
 export interface GetMovieResponse {
   url: string
@@ -23,18 +24,14 @@ export interface GetMoviesResponse {
   previous?: string
   results: GetMovieResponse[]
 }
-const getMovies = async (): Promise<GetMoviesResponse> => {
-  const response = await fetch('http://host.docker.internal:8000/movies')
 
-  return await response.json()
-}
 const Page: React.FC = async () => {
-  const movies = await getMovies()
+  const movies = await getMovies(1)
 
   return (
       <div data-testid={'catalog'}>
           <NavBar currentPage={'Catalog'} />
-          <MovieList movieList={movies.results} title={'All Movies'}/>
+          <MovieList initialMovieList={movies.results} title={'All Movies'}/>
       </div>
   )
 }

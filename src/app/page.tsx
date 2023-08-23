@@ -46,8 +46,8 @@ const LandingPage = (): JSX.Element => {
               isFlipped={false}
           />
           <CardList />
-          <MovieList title={'Most Popular'} movieList={movies} />
-          <MovieList title={'Family Frights'} movieList={movies} />
+          <MovieList title={'Most Popular'} initialMovieList={movies} />
+          <MovieList title={'Family Frights'} initialMovieList={movies} />
       </div>
   )
 }

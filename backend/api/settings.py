@@ -25,8 +25,12 @@ SECRET_KEY = 'django-insecure-f9*zjek&$irpqqis!9cis=a59zmc_8z5r-x-vkg*tcb(u^5z=^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["host.docker.internal", "localhost"]
+ALLOWED_HOSTS = ["host.docker.internal", "localhost", "127.0.0.1"]
 
+CORS_ALLOWED_ORIGINS = ["http://host.docker.internal", "http://localhost", "http://127.0.0.1:3000", "http://127.0.0.1"]
+CORS_ALLOW_HEADERS = ('content-disposition', 'accept-encoding',
+                      'content-type', 'accept', 'origin', 'authorization', 'access-control-allow-origin')
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -41,9 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
