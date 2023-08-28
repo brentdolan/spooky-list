@@ -3,8 +3,6 @@ import { NavBar } from '@/components/NavBar/NavBar'
 import { HeroSection } from '@/components/HeroSection/HeroSection'
 import { CardList } from '@/components/CardList/CardList'
 import { MovieList } from '@/components/MovieList/MovieList'
-import { SessionProvider } from '@/providers/SessionProvider'
-import { useSession } from '@/hooks/useSession'
 
 const movies = [
   {
@@ -35,25 +33,21 @@ const movies = [
     poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
   }
 ]
-const LandingPage: React.FC = async () => {
-  const { user, hasSession } = await useSession()
-
+const LandingPage = (): JSX.Element => {
   return (
-      <SessionProvider user={user} hasSession={hasSession}>
-          <div data-testid={'landing-page'}>
-              <NavBar currentPage={'/'} />
-              <HeroSection
-                  headerText={"What's your favorite scary movie?"}
-                  bodyText={'Lorem ipsum dolor sit amet consectetur. Justo dignissim neque id duis purus amet at ullamcorper phasellus.'}
-                  image={'/ghostface.svg'}
-                  altText={'Two Cartoon Ghosts'}
-                  isFlipped={false}
-              />
-              <CardList />
-              <MovieList title={'Most Popular'} movieList={movies} />
-              <MovieList title={'Family Frights'} movieList={movies} />
-          </div>
-      </SessionProvider>
+      <div data-testid={'landing-page'}>
+          <NavBar currentPage={'/'} />
+          <HeroSection
+              headerText={"What's your favorite scary movie?"}
+              bodyText={'Lorem ipsum dolor sit amet consectetur. Justo dignissim neque id duis purus amet at ullamcorper phasellus.'}
+              image={'/ghostface.svg'}
+              altText={'Two Cartoon Ghosts'}
+              isFlipped={false}
+          />
+          <CardList />
+          <MovieList title={'Most Popular'} initialMovieList={movies} />
+          <MovieList title={'Family Frights'} initialMovieList={movies} />
+      </div>
   )
 }
 

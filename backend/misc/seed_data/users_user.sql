@@ -1,0 +1,1 @@
+INSERT INTO public.users_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) VALUES (1, 'pbkdf2_sha256$600000$sNlgS5prIld429Ui26Zdub$RgIRazAg2RFZSZUZxPqL+Fm0O2NGuHL5FP3QVEZvAbo=', '2023-08-13 21:54:50.684264 +00:00', true, 'stephen', '', '', 'skernan@harding.edu', true, true, '2023-08-13 21:54:31.247983 +00:00');

@@ -1,16 +1,23 @@
-from .models import Movie, Person
+from .models import Movie, Person, MovieCastAndCrew
 from rest_framework import serializers
 
 
 class RecommendationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = "__all__"
+        fields = ["id", "title", "poster"]
+
+
+class CastAndCrewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Person
+        fields = ["id", "full_name"]
 
 
 class MovieSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-#     other_recommendations = RecommendationSerializer(many=True)
+    other_recommendations = RecommendationSerializer(many=True)
+    cast_and_crew = CastAndCrewSerializer(many=True)
     genres = serializers.SlugRelatedField(
         many=True,
         read_only=True,
@@ -32,7 +39,7 @@ class MovieSerializer(serializers.ModelSerializer):
             "where_to_watch",
             "genres",
             "cast_and_crew",
-            # "other_recommendations",
+            "other_recommendations",
         ]
 
 
