@@ -25,6 +25,9 @@ export const MovieList: React.FC<MovieListProps> = ({ title, initialMovieList })
     })
     setPage(page + 1)
   }
+  if (movieList.length === 0) {
+    return <></>
+  }
   return (
       <div data-testid={'movies-list'} >
           <h3 data-testid={'movies-list-title'} className={styles.listTitle} >

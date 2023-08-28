@@ -5,6 +5,7 @@ import styles from './movieDetailPage.module.scss'
 // import { BookmarkOutlined, PlaylistAdd } from '@mui/icons-material'
 // import { IconButton, Tooltip } from '@mui/material'
 import { type GetMovieResponse } from '@/app/catalog/page'
+import { MovieList } from '@/components/MovieList/MovieList'
 
 const getMovie = async (id: string): Promise<GetMovieResponse> => {
   const response = await fetch(`http://host.docker.internal:8000/movies/${id}`)
@@ -21,7 +22,7 @@ interface MovieDetailProps {
 const Page: React.FC<MovieDetailProps> = async ({ params }) => {
   const id = params.id
   const movie = await getMovie(id)
-
+  console.log(movie)
   return (
       <div data-testid={'movies-details'}>
           <NavBar currentPage={'Catalog'} />
@@ -54,6 +55,7 @@ const Page: React.FC<MovieDetailProps> = async ({ params }) => {
                   <p>{movie.description}</p>
               </div>
           </div>
+          <MovieList title={'Other Recommendations'} initialMovieList={movie.other_recommendations}/>
       </div>
   )
 }

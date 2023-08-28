@@ -17,6 +17,11 @@ export interface GetMovieResponse {
   where_to_watch: string[]
   genres: string[]
   cast_and_crew: string[]
+  other_recommendations: Array<{
+    id: number
+    title: string
+    poster: string
+  }>
 }
 export interface GetMoviesResponse {
   count: number
