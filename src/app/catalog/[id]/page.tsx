@@ -22,7 +22,7 @@ interface MovieDetailProps {
 const Page: React.FC<MovieDetailProps> = async ({ params }) => {
   const id = params.id
   const movie = await getMovie(id)
-  console.log(movie)
+
   return (
       <div data-testid={'movies-details'}>
           <NavBar currentPage={'Catalog'} />
