@@ -21,6 +21,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 from movies.views import MovieViewSet
+from users.views import RegisterAPI
 
 router = routers.DefaultRouter()
 router.register(r'movies', MovieViewSet)
@@ -28,7 +29,7 @@ router.register(r'movies', MovieViewSet)
 swagger_view = get_schema_view(
     openapi.Info(
         title="Spooky List",
-        default_version=1,
+        default_version="1",
         description="API documentation",
     ),
     public=True,
@@ -41,5 +42,6 @@ urlpatterns = [
     path('redoc/', swagger_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
     path('admin/', admin.site.urls),
+    path('register/', include('users.urls')),
     path('', include(router.urls)),
 ]
