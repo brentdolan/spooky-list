@@ -4,7 +4,6 @@ import styles from './MovieList.module.scss'
 import Link from 'next/link'
 import { Button } from '@/components/Button/Button'
 import { getMovies } from '@/helpers/fetch'
-import { type GetMovieResponse, type GetMoviesResponse } from '@/app/catalog/page'
 
 interface MovieListProps {
   title: string
