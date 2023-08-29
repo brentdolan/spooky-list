@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavBar } from '@/components/NavBar/NavBar'
 import styles from './movieDetailPage.module.scss'
 // import { Button } from '@/components/Button/Button'
 // import { BookmarkOutlined, PlaylistAdd } from '@mui/icons-material'
@@ -25,7 +24,6 @@ const Page: React.FC<MovieDetailProps> = async ({ params }) => {
 
   return (
       <div data-testid={'movies-details'}>
-          <NavBar currentPage={'Catalog'} />
           <div className={styles.details}>
               <img className={styles.poster} title={movie.title} alt={`Movie poster for ${movie.title}`} src={movie.poster} />
               <div className={styles.movieInfo}>
