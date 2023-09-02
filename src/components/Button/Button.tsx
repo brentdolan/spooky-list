@@ -12,6 +12,9 @@ export const Button: React.FC<ButtonProps> = ({ onClick, children, variant }) =>
   if (variant === 'secondary') {
     variantClass = styles.secondary
   }
+  if (variant === 'tertiary') {
+    variantClass = styles.tertiary
+  }
   if (variant === 'minimal') {
     variantClass = styles.minimal
   }

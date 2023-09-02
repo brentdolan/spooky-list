@@ -28,6 +28,11 @@
     }
 }
 
+.tertiary {
+    background-color: var(--black-cat);
+    color: var(--ghost);
+}
+
 @media (min-width: 375px) {
     .button {
         font-size: 18px;

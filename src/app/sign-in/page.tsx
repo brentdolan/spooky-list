@@ -1,26 +1,16 @@
 'use client'
 import React from 'react'
-import styles from './sign-up.module.scss'
+import styles from './sign-in.module.scss'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { Divider, TextField } from '@mui/material'
 import { Button } from '@/components/Button/Button'
 
-const SignUpPage = (): JSX.Element => {
+const SignInPage = (): JSX.Element => {
   const formFields: Array<{
     placeholderText: string
     label: string
     name: string
   }> = [
-    {
-      placeholderText: 'Jason',
-      label: 'First Name',
-      name: 'firstName'
-    },
-    {
-      placeholderText: 'Voorhees',
-      label: 'Last Name',
-      name: 'lastName'
-    },
     {
       placeholderText: 'hockeymask@crystallake.com',
       label: 'Email Address',
@@ -34,10 +24,10 @@ const SignUpPage = (): JSX.Element => {
   ]
 
   return (
-      <div data-testid={'sign-up'}>
+      <div data-testid={'sign-in'}>
           <NavBar currentPage={'/'} />
           <div className={styles.formContainer}>
-              <h2 className={styles.header} >Sign Up</h2>
+              <h2 className={styles.header} >Sign In</h2>
               <form className={styles.form}>
                   {
                     formFields.map((field) => (
@@ -54,14 +44,14 @@ const SignUpPage = (): JSX.Element => {
                         />
                     ))
                   }
-                  <Button onClick={() => {}} variant={'tertiary'}>Sign Up With Email</Button>
+                  <Button onClick={() => {}} variant={'tertiary'}>Sign In</Button>
               </form>
               <Divider className={styles.divider}>or</Divider>
-              <Button onClick={() => {}} >Sign Up With Google</Button>
+              <Button onClick={() => {}} >Sign In With Google</Button>
           </div>
 
       </div>
   )
 }
 
-export default SignUpPage
+export default SignInPage
