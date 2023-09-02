@@ -15,6 +15,7 @@ interface MovieListProps {
 }
 
 // Prop for Button to appear/not appear
+const trimmedURL = (url: string): string => url.replace('_V1_', '_V1_UX197_CR0')
 
 export const MovieList: React.FC<MovieListProps> = ({ title, initialMovieList }) => {
   const [page, setPage] = useState(1)
@@ -37,7 +38,7 @@ export const MovieList: React.FC<MovieListProps> = ({ title, initialMovieList })
               {movieList.map(movie => (
                   <div className={styles.imageContainer} data-testid={`movie-${movie.title}`} key={movie.id}>
                       <Link href={`/catalog/${movie.id}`}>
-                          <img alt={movie.title} src={movie.poster}/>
+                          <img alt={movie.title} src={trimmedURL(movie.poster)}/>
                       </Link>
                   </div>
               ))}

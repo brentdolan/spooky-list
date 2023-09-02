@@ -10,9 +10,16 @@
   display: flex;
   border: 3px solid var(--black-cat);
   border-radius: 10px;
+  background-color: var(--black-cat);
+  height: 100%;
+
+  a {
+    width: 100%;
+  }
 
   img {
-    width: 7rem;
+    position: relative !important;
+    width: auto;
     height: 100%;
   }
 }

@@ -6,6 +6,10 @@
   }
 }
 
+.linkText {
+  text-align: center;
+}
+
 .header {
  text-align: center;
   font-family: var(--headingFont);
@@ -40,5 +44,13 @@
   .formContainer {
     width: 50%;
     margin-inline: auto;
+  }
+
+  .divider {
+    margin-block: 2rem;
+
+    &::before, &::after {
+      border-top: 2px solid var(--black-cat);
+    }
   }
 }
