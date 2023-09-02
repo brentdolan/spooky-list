@@ -21,7 +21,6 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 # install python dependencies
 COPY /pyproject.toml .
 COPY /poetry.lock .
-COPY /Makefile .
 
 # Update poetry path and configure Django settings
 ENV PATH="${PATH}:/root/.local/bin"
