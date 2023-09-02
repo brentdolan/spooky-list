@@ -186,12 +186,12 @@ def save_movies(movie_list):
         if len(movie.get("cast_and_crew", [])) > 0:
             movie_to_add.cast_and_crew.set(movie.get("cast_and_crew", []), through_defaults={"role": "cast"})
         else:
-            print("NO CAST => ", movie)
+            print(f"WARN: {movie.get('title')} has no cast.")
 
         if len(movie.get("genres", [])) > 0:
             movie_to_add.genres.set(movie.get("genres", []))
         else:
-            print("NO GENRES => ", movie)
+            print(f"WARN: {movie.get('title')} has no genres.")
 
 
 class Command(BaseCommand):
