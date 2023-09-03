@@ -1,9 +1,7 @@
-import argparse
 import csv
 import json
 import os
 import re
-from typing import List
 
 from django.core.management import BaseCommand
 
@@ -205,6 +203,9 @@ class Command(BaseCommand):
 
         file_path = kwargs["file_path"]
         all_movies = pull_movie_data(file_path)
+        print("Saving genres...")
         save_genres()
+        print("Saving people...")
         save_people()
+        print("Saving movies...")
         save_movies(all_movies)

@@ -30,7 +30,6 @@ RUN poetry update && poetry install
 
 # Copy project files. We do this after install so that changes to files don't require install again.
 COPY . .
-RUN poetry run ./manage.py migrate
 
 # run at port 8000
 EXPOSE 8000
