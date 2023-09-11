@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Movie, Person, StreamingPlatform, Genre, MovieGenre, MovieCastAndCrew, StreamingPlatformMovies
+
+from .models import Movie, Person, StreamingPlatform, Genre, MovieGenre, MovieCastAndCrew, StreamingPlatformMovies, List
 
 
 class MovieAdmin(admin.ModelAdmin):
@@ -13,6 +14,7 @@ class GenreAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(Person)
+admin.site.register(List)
 admin.site.register(MovieGenre)
 admin.site.register(MovieCastAndCrew)
 admin.site.register(StreamingPlatformMovies)

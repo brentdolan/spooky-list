@@ -23,7 +23,9 @@ export const useSession = async (): Promise<UseSessionResponse> => {
   // Connect to supabase
   const supabase = createServerActionClient({ cookies })
   // Get session from supabase
-  const { data: { session } } = await supabase.auth.getSession()
+  const all = await supabase.auth.getSession()
+  console.log(all.data.session?.access_token)
+  const { data: { session } } = all
 
   // Create our own auth object
   const authResponse = {

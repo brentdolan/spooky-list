@@ -3,6 +3,7 @@ import { NavBar } from '@/components/NavBar/NavBar'
 import { HeroSection } from '@/components/HeroSection/HeroSection'
 import { CardList } from '@/components/CardList/CardList'
 import { MovieList } from '@/components/MovieList/MovieList'
+import { useSession } from '@/hooks/useSession'
 
 const movies = [
   {
@@ -34,7 +35,7 @@ const movies = [
   }
 ]
 const LandingPage = async (): Promise<JSX.Element> => {
-  // const { hasSession, user } = await useSession()
+  await useSession()
 
   return (
       <div data-testid={'landing-page'}>
