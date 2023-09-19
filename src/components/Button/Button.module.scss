@@ -5,7 +5,6 @@
     font-size: 14px;
     background-color: var(--slime);
     border-radius: 8px;
-    border: 3px solid var(--black-cat);
     padding: .5rem 2rem;
     cursor: pointer;
     height: min-content;
@@ -14,7 +13,9 @@
 }
 
 .secondary {
-    background-color: var(--grimaceLight);
+    background-color: var(--black-cat);
+    color: var(--ghost);
+    border: 3px solid var(--slime)
 }
 
 .minimal {
@@ -31,6 +32,7 @@
 .tertiary {
     background-color: var(--black-cat);
     color: var(--ghost);
+    border: 3px solid var(--slime)
 }
 
 @media (min-width: 375px) {

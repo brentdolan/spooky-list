@@ -8,7 +8,7 @@ import { InputLabel } from '@/components/Form/InputLabel'
 import { FormControl } from '@mui/base'
 import { Divider } from '@mui/material'
 import Link from 'next/link'
-
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 const SignUpPage = (): JSX.Element => {
   const formFields: Array<{
     placeholderText: string
@@ -37,6 +37,19 @@ const SignUpPage = (): JSX.Element => {
     }
   ]
 
+  const signInWithGoogle = (): void => {
+    const supabase = createClientComponentClient()
+    void supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent'
+        }
+      }
+    })
+  }
+
   return (
       <div data-testid={'sign-up'}>
           <NavBar currentPage={'/'} />
@@ -64,7 +77,7 @@ const SignUpPage = (): JSX.Element => {
                   <p className={styles.linkText}>Already have an account? <Link href={'/sign-in'}>Sign in.</Link></p>
               </form>
               <Divider className={styles.divider}>or</Divider>
-              <Button onClick={() => {}} >Sign Up With Google</Button>
+              <Button onClick={signInWithGoogle} >Sign Up With Google</Button>
           </div>
 
       </div>

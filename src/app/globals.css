@@ -5,6 +5,7 @@
     --black-cat: #1E1E1E;
     --ghost: #F9FFFA;
     --grimaceLight: #D9D6F1;
+    --black-cat-light: #3E3E3E;
     /* These fonts are declared in @/src/app/layout.tsx
        However, we add them here to make code completion see them.
      */
@@ -18,7 +19,7 @@
 }
 body {
     margin: 0;
-    background-color: var(--grimace) ;
+    background-color: var(--black-cat) ;
     padding: 1em 1.5em;
 }
 
