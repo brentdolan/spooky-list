@@ -21,10 +21,12 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 from movies.views import MovieViewSet
-from users.views import RegisterAPI
+from users.views import RegisterAPI, MeAPI
 
 router = routers.DefaultRouter()
 router.register(r'movies', MovieViewSet)
+router.register(r'users/me', MeAPI, basename="me")
+router.register(r'users/register', RegisterAPI, basename="register")
 
 swagger_view = get_schema_view(
     openapi.Info(
@@ -42,6 +44,5 @@ urlpatterns = [
     path('redoc/', swagger_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
     path('admin/', admin.site.urls),
-    path('register/', include('users.urls')),
     path('', include(router.urls)),
 ]

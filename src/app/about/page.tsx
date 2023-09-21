@@ -1,12 +1,17 @@
-'use client'
 import React from 'react'
 import { NavBar } from '@/components/NavBar/NavBar'
+import { SessionProvider } from '@/providers/SessionProvider'
+import { useSession } from '@/hooks/useSession'
 
-const Page = (): JSX.Element => {
+const Page: React.FC = async () => {
+  const { hasSession, user } = await useSession()
   return (
-      <div data-testid={'about'}>
-          <NavBar currentPage={'About'} />
-      </div>
+      <SessionProvider user={user} hasSession={hasSession}>
+          <div data-testid={'about'}>
+              <NavBar currentPage={'About'} />
+          </div>
+      </SessionProvider>
+
   )
 }
 

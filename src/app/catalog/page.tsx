@@ -2,6 +2,8 @@ import React from 'react'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { MovieList } from '@/components/MovieList/MovieList'
 import { getMovies } from '@/helpers/fetch'
+import { useSession } from '@/hooks/useSession'
+import { SessionProvider } from '@/providers/SessionProvider'
 
 export interface GetMovieResponse {
   url: string
@@ -32,12 +34,15 @@ export interface GetMoviesResponse {
 
 const Page: React.FC = async () => {
   const movies = await getMovies(1)
+  const { hasSession, user } = await useSession()
 
   return (
-      <div data-testid={'catalog'}>
-          <NavBar currentPage={'Catalog'} />
-          <MovieList initialMovieList={movies.results} title={'All Movies'}/>
-      </div>
+      <SessionProvider hasSession={hasSession} user={user}>
+          <div data-testid={'catalog'}>
+              <NavBar currentPage={'Catalog'} />
+              <MovieList initialMovieList={movies.results} title={'All Movies'}/>
+          </div>
+      </SessionProvider>
   )
 }
 export default Page
