@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.viewsets import GenericViewSet
 
-from movies.models import Movie, List, MovieList
+from movies.models import Movie, List, MovieList, UserWatchedMovies
 from users.serializers import UserSerializer
 
 SUPABASE_JWT_SECRET = os.environ.get("SUPABASE_JWT_SECRET")
@@ -100,6 +100,36 @@ class MeAPI(GenericViewSet):
             })
         else:
             return UNAUTHORIZED_RESPONSE
+
+    @action(methods=["get"], detail=False, url_path="profile", permission_classes=[permissions.AllowAny])
+    def get_user_profile(self, request, *args, **kwargs):
+        user = self.get_user_from_cookie(request)
+
+        if not user:
+            return UNAUTHORIZED_RESPONSE
+
+        user_watched_movies = user.watched_movies.order_by("-userwatchedmovies__date_watched", "title").values()
+
+        user_primary_list = user.list_set.first()
+        unwatched_movies_on_user_primary_list = (
+            user_primary_list.movies
+            .order_by("title")
+            .filter(
+                userwatchedmovies__user_id=user.id,
+                userwatchedmovies__date_watched__isnull=True
+            )
+            .values()
+        )
+
+        return Response(data={
+            "watch_history": user_watched_movies,
+            "watch_list": unwatched_movies_on_user_primary_list,
+            "user_metadata": {
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+                "email": user.email,
+            }
+        })
 
     @action(methods=["post"], detail=False, url_path="watched", permission_classes=[permissions.AllowAny])
     def mark_as_watched(self, request, *args, **kwargs):

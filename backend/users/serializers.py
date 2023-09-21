@@ -23,7 +23,6 @@ class UserSerializer(serializers.ModelSerializer):
                 return Response(status=500, data={"Message": f"Required field missing: {field}"})
             user_fields[field] = validated_data[field]
 
-        print("USER FIELDS => ", user_fields)
         user = UserModel.objects.create_user(**{**user_fields, "username": user_fields["email"]})
 
         return user
