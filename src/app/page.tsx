@@ -3,6 +3,8 @@ import { NavBar } from '@/components/NavBar/NavBar'
 import { HeroSection } from '@/components/HeroSection/HeroSection'
 import { CardList } from '@/components/CardList/CardList'
 import { MovieList } from '@/components/MovieList/MovieList'
+import { useSession } from '@/hooks/useSession'
+import { SessionProvider } from '@/providers/SessionProvider'
 
 const movies = [
   {
@@ -33,21 +35,25 @@ const movies = [
     poster: 'https://flxt.tmsimg.com/assets/p18852_p_v10_al.jpg'
   }
 ]
-const LandingPage = (): JSX.Element => {
+const LandingPage = async (): Promise<JSX.Element> => {
+  const { hasSession, user } = await useSession()
+
   return (
-      <div data-testid={'landing-page'}>
-          <NavBar currentPage={'/'} />
-          <HeroSection
-              headerText={"What's your favorite scary movie?"}
-              bodyText={'Lorem ipsum dolor sit amet consectetur. Justo dignissim neque id duis purus amet at ullamcorper phasellus.'}
-              image={'/ghostface.svg'}
-              altText={'Two Cartoon Ghosts'}
-              isFlipped={false}
-          />
-          <CardList />
-          <MovieList title={'Most Popular'} initialMovieList={movies} />
-          <MovieList title={'Family Frights'} initialMovieList={movies} />
-      </div>
+      <SessionProvider hasSession={hasSession} user={user}>
+          <div data-testid={'landing-page'}>
+              <NavBar currentPage={'/'} />
+              <HeroSection
+                  headerText={'What\'s your favorite scary movie?'}
+                  bodyText={'Lorem ipsum dolor sit amet consectetur. Justo dignissim neque id duis purus amet at ullamcorper phasellus.'}
+                  image={'/ghostface.svg'}
+                  altText={'Two Cartoon Ghosts'}
+                  isFlipped={false}
+              />
+              <CardList />
+              <MovieList title={'Most Popular'} initialMovieList={movies} />
+              <MovieList title={'Family Frights'} initialMovieList={movies} />
+          </div>
+      </SessionProvider>
   )
 }
 

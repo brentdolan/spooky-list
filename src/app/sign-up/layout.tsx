@@ -12,7 +12,7 @@ const RootLayout: React.FC<LayoutProps> = async ({ children }) => {
   return (
       <SessionProvider hasSession={hasSession} user={user}>
           <Suspense fallback={<MovieDetailSkeleton/>}>
-              <NavBar currentPage={'Catalog'}/>
+              <NavBar currentPage={'/'}/>
               {/* Children of Layout is Page */}
               {children}
           </Suspense>

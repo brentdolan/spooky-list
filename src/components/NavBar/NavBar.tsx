@@ -1,10 +1,11 @@
 'use client'
-import React from 'react'
+import React, { useContext } from 'react'
 import { MenuRounded } from '@mui/icons-material'
 import styles from './NavBar.module.scss'
 import { Button } from '@/components/Button/Button'
 import { Box, Drawer, IconButton } from '@mui/material'
 import Link from 'next/link'
+import { SessionContext } from '@/providers/SessionProvider'
 
 interface NavBarProps {
   currentPage: string
@@ -21,10 +22,15 @@ export const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
   const redirectToSignUp = (): void => {
     window.location.href = '/sign-up'
   }
+  const redirectToSignIn = (): void => {
+    window.location.href = '/sign-in'
+  }
 
   const toggleDrawer = (open: boolean): void => {
     setDrawerOpen(open)
   }
+
+  const { hasSession } = useContext(SessionContext)
 
   return (
       <>
@@ -45,8 +51,15 @@ export const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
                       </Link>
                   ))}
               </Box>
-              <Box className={styles.buttonWrapper} sx={{ display: { xs: 'none', md: 'block' } }}>
-                  <Button onClick={redirectToSignUp}>Sign Up</Button>
+              <Box className={styles.buttonWrapper} sx={{ display: { xs: 'none', md: 'flex' } }}>
+                  {hasSession
+                    ? <Link className={styles.navText} href={'/me'}>My Account</Link>
+                    : (
+                        <>
+                            <Button onClick={redirectToSignUp}>Sign Up</Button>
+                            <Button variant={'secondary'} onClick={redirectToSignIn}>Sign In</Button>
+                        </>
+                      )}
               </Box>
               <IconButton
                   color="inherit"
@@ -92,8 +105,15 @@ export const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
                           {link.text}
                       </Link>
                   ))}
-                  <Box className={styles.buttonWrapper} >
-                      <Button onClick={redirectToSignUp}>Sign Up</Button>
+                  <Box className={styles.buttonWrapper} sx={{ display: { xs: 'flex', md: 'none' } }} >
+                      {hasSession
+                        ? <Link className={styles.navText} href={'/me'}>My Account</Link>
+                        : (
+                            <>
+                                <Button onClick={redirectToSignUp}>Sign Up</Button>
+                                <Button variant={'secondary'} onClick={redirectToSignIn}>Sign In</Button>
+                            </>
+                          )}
                   </Box>
               </Drawer>
           </Box>

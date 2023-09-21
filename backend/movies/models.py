@@ -1,5 +1,8 @@
 import datetime
 import time
+import uuid
+from django.contrib import admin
+from django.contrib.auth import get_user_model
 
 from django.db import models
 from django.db.models import Q
@@ -149,6 +152,18 @@ class Genre(models.Model):
         return self.name
 
 
+class List(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), editable=False)
+    user_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    movies = models.ManyToManyField(
+        Movie,
+        related_name="+",
+        default=None,
+        blank=True,
+        through="MovieList"
+    )
+
+
 # JOIN TABLES
 
 class MovieGenre(models.Model):
@@ -174,3 +189,35 @@ class MovieCastAndCrew(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     role = models.CharField(blank=True, default="cast")
+
+
+class MovieList(models.Model):
+    class Meta:
+        db_table = "movies_movie_list"
+
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    list = models.ForeignKey(List, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(default=datetime.datetime.now())
+    date_watched = models.DateTimeField(default=None, blank=True, null=True)
+
+
+class UserWatchedMovies(models.Model):
+    class Meta:
+        db_table = "movies_user_watched_movies"
+
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    date_watched = models.DateTimeField(default=datetime.datetime.now())
+
+
+class UserStreamingPlatform(models.Model):
+    class Meta:
+        db_table = "movies_user_streaming_platform"
+
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    streaming_platform = models.ForeignKey(StreamingPlatform, on_delete=models.CASCADE)
+
+
+class UserStreamingPlatformInline(admin.TabularInline):
+    model = UserStreamingPlatform
+    extra = 1

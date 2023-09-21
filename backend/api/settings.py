@@ -44,7 +44,9 @@ CORS_ALLOW_HEADERS = (
     'accept',
     'origin',
     'authorization',
-    'access-control-allow-origin'
+    'access-control-allow-origin',
+    'cookie',
+    'user-cookie'
 )
 
 CORS_ORIGIN_ALLOW_ALL = True

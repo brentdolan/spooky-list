@@ -1,10 +1,8 @@
 import React from 'react'
 import styles from './movieDetailPage.module.scss'
-// import { Button } from '@/components/Button/Button'
-// import { BookmarkOutlined, PlaylistAdd } from '@mui/icons-material'
-// import { IconButton, Tooltip } from '@mui/material'
 import { type GetMovieResponse } from '@/app/catalog/page'
 import { MovieList } from '@/components/MovieList/MovieList'
+import { MovieActionButtons } from '@/app/catalog/[id]/MovieActionButtons'
 
 const getMovie = async (id: string): Promise<GetMovieResponse> => {
   const response = await fetch(`http://host.docker.internal:8000/movies/${id}`)
@@ -36,20 +34,7 @@ const Page: React.FC<MovieDetailProps> = async ({ params }) => {
                           <span><strong>Runtime:</strong> {movie.length_minutes} minutes</span>
                       </div>
                   </div>
-                  {/* <div className={styles.buttons}> */}
-                  {/*    <Button variant={'secondary'}>Mark as Watched</Button> */}
-                  {/*    <Tooltip title={'Bookmark'}> */}
-                  {/*        <IconButton> */}
-                  {/*            <BookmarkOutlined sx={{ fontSize: '2rem' }}/> */}
-                  {/*        </IconButton> */}
-                  {/*    </Tooltip> */}
-                  {/*    <Tooltip title={'Add to List'}> */}
-                  {/*        <IconButton> */}
-                  {/*            <PlaylistAdd sx={{ fontSize: '2rem' }}/> */}
-                  {/*        </IconButton> */}
-                  {/*    </Tooltip> */}
-                  {/* </div> */}
-
+                  <MovieActionButtons movieID={movie.id}/>
                   <p>{movie.description}</p>
               </div>
           </div>
