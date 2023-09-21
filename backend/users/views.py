@@ -64,8 +64,8 @@ class MeAPI(GenericViewSet):
 
     @staticmethod
     def get_user_from_cookie(request) -> get_user_model():
-        if 'HTTP_COOKIE' in request.META:
-            cookie = request.META.get("HTTP_COOKIE")
+        if 'HTTP_USER_COOKIE' in request.META:
+            cookie = request.META.get("HTTP_USER_COOKIE")
             decoded_cookie = jwt.decode(
                 cookie,
                 SUPABASE_JWT_SECRET,
@@ -87,7 +87,7 @@ class MeAPI(GenericViewSet):
             return user
 
     def list(self, request, *args, **kwargs):
-        if 'HTTP_COOKIE' in request.META:
+        if 'HTTP_USER_COOKIE' in request.META:
             user = self.get_user_from_cookie(request)
 
             if not user:

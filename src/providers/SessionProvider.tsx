@@ -8,7 +8,8 @@ export const SessionContext = createContext({
   user: {
     id: '',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    accessToken: ''
   }
 })
 

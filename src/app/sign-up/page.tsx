@@ -1,7 +1,6 @@
 'use client'
 import React, { type ChangeEventHandler, type FormEventHandler, useState } from 'react'
 import styles from './sign-up.module.scss'
-import { NavBar } from '@/components/NavBar/NavBar'
 import { Button } from '@/components/Button/Button'
 import { TextField } from '@/components/Form/TextField'
 import { InputLabel } from '@/components/Form/InputLabel'
@@ -11,7 +10,7 @@ import Link from 'next/link'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Error } from '@mui/icons-material'
 
-const SignUpPage: React.FC = () => {
+const SignUpPage: React.FC = async () => {
   const [error, setError] = useState('')
   const [userData, setUserData] = useState({
     firstName: '',
@@ -97,7 +96,6 @@ const SignUpPage: React.FC = () => {
 
   return (
       <div data-testid={'sign-up'}>
-          <NavBar currentPage={'/'} />
           <div className={styles.formContainer}>
               <h2 className={styles.header} >Sign Up</h2>
               <form onSubmit={onSubmit}>
@@ -122,14 +120,13 @@ const SignUpPage: React.FC = () => {
                   </div>
                   <Button onClick={() => {}} variant={'tertiary'}>Sign Up With Email</Button>
                   {error !== '' && (
-                  <div className={styles.error}><Error/>{error}</div>
+                      <div className={styles.error}><Error/>{error}</div>
                   )}
                   <p className={styles.linkText}>Already have an account? <Link href={'/sign-in'}>Sign in.</Link></p>
               </form>
               <Divider className={styles.divider}>or</Divider>
               <Button onClick={signUpWithGoogle} >Sign Up With Google</Button>
           </div>
-
       </div>
   )
 }

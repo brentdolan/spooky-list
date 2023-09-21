@@ -1,7 +1,6 @@
 'use client'
 import React, { type ChangeEventHandler, type FormEventHandler, useState } from 'react'
 import styles from './sign-in.module.scss'
-import { NavBar } from '@/components/NavBar/NavBar'
 import { Divider } from '@mui/material'
 import { Button } from '@/components/Button/Button'
 import { FormControl } from '@mui/base'
@@ -77,7 +76,6 @@ const SignInPage = (): JSX.Element => {
 
   return (
       <div data-testid={'sign-in'}>
-          <NavBar currentPage={'/'} />
           <div className={styles.formContainer}>
               <h2 className={styles.header} >Sign In</h2>
               <form onSubmit={onSubmit} >
@@ -102,14 +100,13 @@ const SignInPage = (): JSX.Element => {
                   </div>
                   <Button onClick={() => {}} variant={'tertiary'}>Sign In</Button>
                   {error !== '' && (
-                  <div className={styles.error}><Error/>{error}</div>
+                      <div className={styles.error}><Error/>{error}</div>
                   )}
                   <p className={styles.linkText}>Don&apos;t have an account yet? <Link href={'/sign-up'}>Sign up</Link></p>
               </form>
               <Divider className={styles.divider}>or</Divider>
               <Button onClick={signInWithGoogle} >Sign In With Google</Button>
           </div>
-
       </div>
   )
 }

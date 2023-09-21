@@ -5,6 +5,7 @@ export interface User {
   firstName: string
   lastName: string
   id: string
+  accessToken: string
 }
 
 export interface UseSessionResponse {
@@ -33,7 +34,8 @@ export const useSession = async (): Promise<UseSessionResponse> => {
     user: {
       firstName: '',
       lastName: '',
-      id: ''
+      id: '',
+      accessToken: ''
     }
   }
 
@@ -44,6 +46,7 @@ export const useSession = async (): Promise<UseSessionResponse> => {
 
   // Fill out the AuthResponse object
   authResponse.user.id = session.user.id
+  authResponse.user.accessToken = session.access_token
   authResponse.hasSession = true
 
   // If email, then they provided their name for us
