@@ -5,10 +5,12 @@
 }
 
 .details {
-font-family: var(--primaryFont);
+  font-family: var(--primaryFont);
+  color: var(--ghost);
 
   h1 {
     font-family: var(--headingFont);
+    color: var(--ghost);
   }
 }
 
@@ -48,7 +50,6 @@ font-family: var(--primaryFont);
 
   .poster {
     height: auto !important;
-    border: 3px solid var(--black-cat);
     border-radius: 10px;
     width: 100%;
   }

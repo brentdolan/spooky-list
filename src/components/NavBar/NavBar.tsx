@@ -88,7 +88,7 @@ export const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
                       boxSizing: 'border-box',
                       width: '70%',
                       padding: '1em 1.5em',
-                      backgroundColor: 'var(--grimace)',
+                      backgroundColor: 'var(--black-cat)',
                       borderRight: '3px solid var(--black-cat)'
                     }
                   }}

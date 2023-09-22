@@ -16,6 +16,7 @@
   aspect-ratio: 0.75;
   transform: none !important;
   --webkit-transform: none !important;
+  overflow: hidden;
 
   a {
     width: 100%;
@@ -32,6 +33,7 @@
   font-family: var(--headingFont);
   font-weight: 800;
   font-size: 1.5rem;
+  color: var(--ghost);
 }
 
 @media (min-width: 768px) {

@@ -13,17 +13,18 @@
 .header {
  text-align: center;
   font-family: var(--headingFont);
-  color: var(--black-cat);
+  color: var(--ghost);
   font-size: 2rem;
 }
 
 .textField {
   margin-bottom: 1.5rem;
-  color: var(--black-cat);
+  color: var(--ghost);
 }
 
 .divider {
   margin-block: .75rem;
+  color: var(--ghost);
 }
 
 .form {
@@ -50,7 +51,7 @@
     margin-block: 2rem;
 
     &::before, &::after {
-      border-top: 2px solid var(--black-cat);
+      border-top: 2px solid var(--ghost);
     }
   }
 }

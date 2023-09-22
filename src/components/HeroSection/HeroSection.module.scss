@@ -4,6 +4,7 @@
   grid-template-areas: 'header header' 'body-text body-text' 'button image';
   grid-template-columns: 2fr 1fr;
   margin-block: 3rem;
+  color: var(--ghost);
 
 
   h2 {
