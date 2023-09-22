@@ -1,0 +1,19 @@
+.secondaryNav {
+  color: var(--ghost);
+  font-family: var(--primaryFont);
+}
+
+.navLink {
+  font-family: var(--primaryFont);
+  font-size: 1.25rem;
+  color: var(--ghost);
+  text-decoration: none;
+  border-bottom: 6px solid transparent;
+  padding-top: 6px;
+  width: min-content;
+  white-space: nowrap;
+}
+
+.active {
+  border-bottom: 3px solid var(--slime);
+}
