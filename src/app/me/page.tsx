@@ -4,46 +4,20 @@ import { SessionProvider } from '@/providers/SessionProvider'
 import { NavBar } from '@/components/NavBar/NavBar'
 import { SecondaryNav } from '@/components/SecondaryNav/SecondaryNav'
 import { MovieList } from '@/components/MovieList/MovieList'
-import { getMovies } from '@/helpers/fetch'
-
-export interface GetMovieResponse {
-  url: string
-  id: number
-  title: string
-  description: string
-  release_date: string
-  rating: string
-  length_minutes: number
-  poster: string
-  amazon_link: string
-  trigger_warning: string
-  where_to_watch: string[]
-  genres: string[]
-  cast_and_crew: string[]
-  other_recommendations: Array<{
-    id: number
-    title: string
-    poster: string
-  }>
-}
-export interface GetMoviesResponse {
-  count: number
-  next: string
-  previous?: string
-  results: GetMovieResponse[]
-}
+import { getProfile } from '@/helpers/fetch'
 
 const ProfilePage: React.FC = async () => {
-  const movies = await getMovies(1)
   const { hasSession, user } = await useSession()
+  const profile = await getProfile(user.accessToken)
+  console.log(profile)
   const tabs: Array<{
     title: string
     component: ReactNode
   }> = [
-    { title: 'Watch List', component: <MovieList title={''} initialMovieList={movies.results}/> },
-    { title: 'History', component: <MovieList title={''} initialMovieList={movies.results}/> }
-
+    { title: 'Watch List', component: <MovieList showButton={false} title={''} initialMovieList={profile.watch_list}/> },
+    { title: 'History', component: <MovieList showButton={false} title={''} initialMovieList={profile.watch_history}/> }
   ]
+
   return (
       <SessionProvider hasSession={hasSession} user={user}>
           <NavBar currentPage={'/'}/>

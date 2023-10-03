@@ -1,6 +1,7 @@
 .secondaryNav {
   color: var(--ghost);
   font-family: var(--primaryFont);
+  margin-block: var(--pageMargin);
 }
 
 .navLink {
@@ -12,8 +13,38 @@
   padding-top: 6px;
   width: min-content;
   white-space: nowrap;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.header {
+  font-size: var(--h1Size);
 }
 
 .active {
   border-bottom: 3px solid var(--slime);
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  margin-block: .5rem;
+}
+
+@media (min-width: 768px) {
+  .links {
+    flex-flow: column;
+    margin-block: 0;
+  }
+
+  .secondaryNav {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .header {
+    margin: 0;
+  }
 }

@@ -6,11 +6,14 @@
     --ghost: #F9FFFA;
     --grimaceLight: #D9D6F1;
     --black-cat-light: #3E3E3E;
+    --h1Size: 1.5rem;
+    --pageMargin: 1.5rem;
     /* These fonts are declared in @/src/app/layout.tsx
        However, we add them here to make code completion see them.
      */
     --headingFont: var(--headingFont);
     --primaryFont: var(--primaryFont);
+
 }
 .container {
     display: grid;
@@ -21,6 +24,14 @@ body {
     margin: 0;
     background-color: var(--black-cat) ;
     padding: 1em 1.5em;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --h1Size: 2.5rem;
+        --pageMargin: 2.5rem;
+
+    }
 }
 
 @media (min-width: 1024px) {

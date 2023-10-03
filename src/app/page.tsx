@@ -50,8 +50,8 @@ const LandingPage = async (): Promise<JSX.Element> => {
                   isFlipped={false}
               />
               <CardList />
-              <MovieList title={'Most Popular'} initialMovieList={movies} />
-              <MovieList title={'Family Frights'} initialMovieList={movies} />
+              <MovieList showButton={false} title={'Most Popular'} initialMovieList={movies} />
+              <MovieList showButton={false} title={'Family Frights'} initialMovieList={movies} />
           </div>
       </SessionProvider>
   )

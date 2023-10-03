@@ -8,6 +8,11 @@
 
 .linkText {
   text-align: center;
+  color: var(--ghost);
+
+  a {
+    color: var(--grimace);
+  }
 }
 
 .header {
@@ -25,6 +30,10 @@
 .divider {
   margin-block: .75rem;
   color: var(--ghost);
+
+  &::before, &::after {
+    border-top: 2px solid var(--ghost);
+  }
 }
 
 .form {

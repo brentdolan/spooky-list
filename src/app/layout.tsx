@@ -2,6 +2,8 @@ import React from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Epilogue, Inter, Poppins } from 'next/font/google'
+import { useSession } from '@/hooks/useSession'
+import { SessionProvider } from '@/providers/SessionProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,14 +25,15 @@ const poppins = Poppins({
   display: 'swap'
 })
 
-const RootLayout = ({
+const RootLayout: React.FC<{ children: React.ReactNode }> = async ({
   children
-}: {
-  children: React.ReactNode
-}): JSX.Element => {
+}) => {
+  const { hasSession, user } = await useSession()
   return (
       <html lang="en">
-          <body className={`${poppins.variable} ${epilogue.variable} ${inter.className}`}>{children}</body>
+          <SessionProvider hasSession={hasSession} user={user}>
+              <body className={`${poppins.variable} ${epilogue.variable} ${inter.className}`}>{children}</body>
+          </SessionProvider>
       </html>
   )
 }

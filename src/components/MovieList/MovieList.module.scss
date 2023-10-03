@@ -1,9 +1,13 @@
 .movieList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  display: flex;
   gap: .75rem;
-  overflow-x: scroll;
-  margin-bottom: 3rem;
+  margin-block: var(--pageMargin);
+
+  h3 {
+    margin-top: 0;
+  }
 }
 
 .imageContainer {
@@ -32,14 +36,13 @@
 .listTitle {
   font-family: var(--headingFont);
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: var(--h1Size);
   color: var(--ghost);
 }
 
 @media (min-width: 768px) {
   .movieList {
-    display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(6, 1fr);
     overflow-x: visible;
     margin-bottom: 6rem;
   }
@@ -48,9 +51,5 @@
     img {
       width: 100%;
     }
-  }
-
-  .listTitle {
-    font-size: 2.5rem;
   }
 }

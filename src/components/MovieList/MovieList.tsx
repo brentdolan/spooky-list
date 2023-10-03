@@ -7,6 +7,7 @@ import { getMovies } from '@/helpers/fetch'
 
 interface MovieListProps {
   title: string
+  showButton?: boolean
   initialMovieList: Array<{
     id: number
     title: string
@@ -17,7 +18,7 @@ interface MovieListProps {
 // Prop for Button to appear/not appear
 const trimmedURL = (url: string): string => url.replace('_V1_', '_V1_UX197_CR0')
 
-export const MovieList: React.FC<MovieListProps> = ({ title, initialMovieList }) => {
+export const MovieList: React.FC<MovieListProps> = ({ title, initialMovieList, showButton = true }) => {
   const [page, setPage] = useState(1)
   const [movieList, setMovieList] = useState(initialMovieList)
   const onCLick = (): void => {
@@ -43,7 +44,7 @@ export const MovieList: React.FC<MovieListProps> = ({ title, initialMovieList })
                   </div>
               ))}
           </div>
-          <Button onClick={onCLick}>View More</Button>
+          {showButton ? <Button onClick={onCLick}>View More</Button> : null}
       </div>
   )
 }

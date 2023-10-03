@@ -1,5 +1,5 @@
 'use client'
-import React, { type ChangeEventHandler, type FormEventHandler, useState } from 'react'
+import React, { type ChangeEventHandler, type FormEventHandler, useContext, useState } from 'react'
 import styles from './sign-up.module.scss'
 import { Button } from '@/components/Button/Button'
 import { TextField } from '@/components/Form/TextField'
@@ -9,8 +9,16 @@ import { Divider } from '@mui/material'
 import Link from 'next/link'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Error } from '@mui/icons-material'
+import { SessionContext } from '@/providers/SessionProvider'
+import { redirect } from 'next/navigation'
 
 const SignUpPage: React.FC = async () => {
+  const { hasSession } = useContext(SessionContext)
+
+  if (hasSession) {
+    return redirect('/')
+  }
+
   const [error, setError] = useState('')
   const [userData, setUserData] = useState({
     firstName: '',
@@ -118,7 +126,7 @@ const SignUpPage: React.FC = async () => {
                         ))
                       }
                   </div>
-                  <Button onClick={() => {}} variant={'tertiary'}>Sign Up With Email</Button>
+                  <Button onClick={() => {}} variant={'secondary'}>Sign Up With Email</Button>
                   {error !== '' && (
                       <div className={styles.error}><Error/>{error}</div>
                   )}

@@ -5,6 +5,7 @@ import { Button } from '@/components/Button/Button'
 import { PlaylistAdd } from '@mui/icons-material'
 import { IconButton, Tooltip } from '@mui/material'
 import { SessionContext } from '@/providers/SessionProvider'
+import buttonStyles from '@/components/Button/Button.module.scss'
 
 interface MovieActionButtonProps {
   movieID: number
@@ -43,7 +44,7 @@ export const MovieActionButtons: React.FC<MovieActionButtonProps> = ({ movieID }
       <div className={styles.buttons}>
           <Button onClick={markAsWatched} variant={'secondary'}>Mark as Watched</Button>
           <Tooltip title={'Add to List'}>
-              <IconButton onClick={addToList} >
+              <IconButton className={buttonStyles.minimal} onClick={addToList} >
                   <PlaylistAdd sx={{ fontSize: '2rem' }}/>
               </IconButton>
           </Tooltip>

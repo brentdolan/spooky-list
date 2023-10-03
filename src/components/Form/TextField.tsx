@@ -12,17 +12,17 @@ export const TextField = styled(MuiTextField)(() => ({
   '& .MuiInputBase-input': {
     borderRadius: 8,
     position: 'relative',
-    backgroundColor: 'var(--grimaceLight)',
+    backgroundColor: 'var(--black-cat-light)',
     border: '2px solid',
-    borderColor: 'var(--black-cat)',
+    borderColor: 'var(--black-cat-light)',
     fontSize: 16,
     width: '100%',
     padding: '10px 12px',
     fontFamily: 'var(--primaryFont)',
+    color: 'var(--ghost)',
     // Use the system font instead of the default Roboto font.
     '&:focus': {
-      border: '2px solid var(--black-cat)',
-      boxShadow: '4px 4px var(--slime)'
+      border: '2px solid var(--ghost)'
     }
   }
 }))

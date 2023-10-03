@@ -4,19 +4,18 @@
     color: var(--black-cat);
     font-size: 14px;
     background-color: var(--slime);
+    border: 3px solid var(--slime);
     border-radius: 8px;
     padding: .5rem 2rem;
     cursor: pointer;
     height: min-content;
     width: min-content;
     white-space: nowrap;
-    border: none;
 }
 
 .secondary {
     background-color: var(--black-cat);
     color: var(--ghost);
-    border: 3px solid var(--slime)
 }
 
 .minimal {
@@ -24,6 +23,7 @@
     border: none;
     padding: 0;
     margin-block: auto;
+    color: var(--ghost);
 
     svg {
         font-size: 2rem;
@@ -33,7 +33,6 @@
 .tertiary {
     background-color: var(--black-cat);
     color: var(--ghost);
-    border: 3px solid var(--slime)
 }
 
 @media (min-width: 375px) {

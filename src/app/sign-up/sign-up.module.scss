@@ -13,6 +13,11 @@
 
 .linkText {
   text-align: center;
+  color: var(--ghost);
+
+  a {
+    color: var(--grimace);
+  }
 }
 
 .header {
@@ -24,12 +29,16 @@
 
 .textField {
   margin-bottom: 1.5rem;
-  color: var(--black-cat);
+  color: var(--ghost);
 }
 
 .divider {
   margin-block: .75rem;
-  color: var(--ghost);
+  color: var(--ghost) !important;
+
+  &::before, &::after {
+    border-top: 2px solid var(--ghost);
+  }
 }
 
 .form {
@@ -89,7 +98,7 @@
     margin-block: 2rem;
 
     &::before, &::after {
-      border-top: 2px solid var(--black-cat);
+      border-top: 2px solid var(--ghost);
     }
   }
 }

@@ -114,10 +114,6 @@ class MeAPI(GenericViewSet):
         unwatched_movies_on_user_primary_list = (
             user_primary_list.movies
             .order_by("title")
-            .filter(
-                userwatchedmovies__user_id=user.id,
-                userwatchedmovies__date_watched__isnull=True
-            )
             .values()
         )
 

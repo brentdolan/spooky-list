@@ -38,7 +38,7 @@ const Page: React.FC<MovieDetailProps> = async ({ params }) => {
                   <p>{movie.description}</p>
               </div>
           </div>
-          <MovieList title={'Other Recommendations'} initialMovieList={movie.other_recommendations}/>
+          <MovieList showButton={false} title={'Other Recommendations'} initialMovieList={movie.other_recommendations}/>
       </div>
   )
 }

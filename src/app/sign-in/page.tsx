@@ -1,5 +1,5 @@
 'use client'
-import React, { type ChangeEventHandler, type FormEventHandler, useState } from 'react'
+import React, { type ChangeEventHandler, type FormEventHandler, useContext, useState } from 'react'
 import styles from './sign-in.module.scss'
 import { Divider } from '@mui/material'
 import { Button } from '@/components/Button/Button'
@@ -9,8 +9,16 @@ import { TextField } from '@/components/Form/TextField'
 import Link from 'next/link'
 import { Error } from '@mui/icons-material'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { SessionContext } from '@/providers/SessionProvider'
+import { redirect } from 'next/navigation'
 
 const SignInPage = (): JSX.Element => {
+  const { hasSession } = useContext(SessionContext)
+
+  if (hasSession) {
+    return redirect('/')
+  }
+
   const [error, setError] = useState('')
   const [userData, setUserData] = useState({
     email: '',
@@ -98,7 +106,7 @@ const SignInPage = (): JSX.Element => {
                         ))
                       }
                   </div>
-                  <Button onClick={() => {}} variant={'tertiary'}>Sign In</Button>
+                  <Button onClick={() => {}} variant={'secondary'}>Sign In</Button>
                   {error !== '' && (
                       <div className={styles.error}><Error/>{error}</div>
                   )}
