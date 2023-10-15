@@ -37,6 +37,8 @@
 
   :first-child {
     margin-right: auto;
+    display: flex;
+    gap: .5rem;
   }
 }
 

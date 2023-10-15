@@ -44,7 +44,9 @@ export const MovieList: React.FC<MovieListProps> = ({ title, initialMovieList, s
                   </div>
               ))}
           </div>
-          {showButton ? <Button onClick={onCLick}>View More</Button> : null}
+          <div className={styles.movieListButton}>
+              {showButton ? <Button onClick={onCLick}>View More</Button> : null}
+          </div>
       </div>
   )
 }

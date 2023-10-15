@@ -1,0 +1,20 @@
+.tableContainer {
+  background-color: #363636;
+  border: 1px solid var(--ghost);
+  color: var(--ghost);
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+
+  th {
+    font-weight: 700;
+    background-color: var(--black-cat-light);
+  }
+
+  td, th {
+    font-family: var(--primaryFont);
+    font-size: 1rem;
+    color: var(--ghost);
+    border: 1px solid var(--ghost);
+  }
+}

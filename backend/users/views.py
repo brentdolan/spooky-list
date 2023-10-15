@@ -108,17 +108,39 @@ class MeAPI(GenericViewSet):
         if not user:
             return UNAUTHORIZED_RESPONSE
 
-        user_watched_movies = user.watched_movies.order_by("-userwatchedmovies__date_watched", "title").values()
+        # Prefetch because we access the movie relationship later
+        user_watched_movies = (
+            UserWatchedMovies.objects
+                .prefetch_related("movie")
+                .filter(user_id=user.id)
+                .order_by("-date_watched")
+        )
 
+        # User's primary list is their first list for now. When we add support for multiple lists, this will change.
         user_primary_list = user.list_set.first()
+
+        # Easiest way to filter on the relationship `date_watched` is by querying the relationship itself
+        unwatched_in_list_subquery = (
+            MovieList.objects
+            .filter(
+                list_id=user_primary_list.id,
+                date_watched=None
+            )
+            .values_list("id", flat=True)
+        )
+
+        # We need the movie info, not just the watched/unwatched.
         unwatched_movies_on_user_primary_list = (
-            user_primary_list.movies
+            Movie.objects
+            .filter(
+                id__in=(unwatched_in_list_subquery)
+            )
             .order_by("title")
             .values()
         )
 
         return Response(data={
-            "watch_history": user_watched_movies,
+            "watch_history": [m.data() for m in user_watched_movies],
             "watch_list": unwatched_movies_on_user_primary_list,
             "user_metadata": {
                 "first_name": user.first_name,

@@ -13,6 +13,11 @@
   margin-top: auto;
   margin-bottom: 1rem;
   gap: 1rem;
+  flex-flow: column;
+
+  button {
+    width: 100%;
+  }
 }
 
 .navTitle {
@@ -46,6 +51,7 @@
 @media (min-width: 768px) {
 
   .buttonWrapper {
+    flex-flow: row;
     margin-left: auto;
   }
 

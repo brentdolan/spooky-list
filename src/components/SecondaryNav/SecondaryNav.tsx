@@ -25,7 +25,7 @@ export const SecondaryNav: React.FC<SecondaryNavProps> = ({ initialTabName, tabs
                   <div key={tab.title} className={`${styles.navLink} ${(tab.title === currentTabName) ? styles.active : ''}`} onClick={switchTabs}>{tab.title}</div>
               ))}
           </div>
-          <div>
+          <div className={styles.content}>
               <h1 className={styles.header}>{currentTab?.title}</h1>
               {currentTab?.component}
           </div>

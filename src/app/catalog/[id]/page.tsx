@@ -3,9 +3,16 @@ import styles from './movieDetailPage.module.scss'
 import { type GetMovieResponse } from '@/app/catalog/page'
 import { MovieList } from '@/components/MovieList/MovieList'
 import { MovieActionButtons } from '@/app/catalog/[id]/MovieActionButtons'
+import { useSession } from '@/hooks/useSession'
 
 const getMovie = async (id: string): Promise<GetMovieResponse> => {
-  const response = await fetch(`http://host.docker.internal:8000/movies/${id}`)
+  const { user } = await useSession()
+  const response = await fetch(`http://host.docker.internal:8000/movies/${id}`, {
+    headers: {
+      'User-Cookie': user.accessToken,
+      'Content-Type': 'application/json'
+    }
+  })
 
   return await response.json()
 }
@@ -34,7 +41,7 @@ const Page: React.FC<MovieDetailProps> = async ({ params }) => {
                           <span><strong>Runtime:</strong> {movie.length_minutes} minutes</span>
                       </div>
                   </div>
-                  <MovieActionButtons movieID={movie.id}/>
+                  <MovieActionButtons watched={movie.is_watched} listed={movie.is_on_list} movieID={movie.id}/>
                   <p>{movie.description}</p>
               </div>
           </div>

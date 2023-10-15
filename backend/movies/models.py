@@ -1,4 +1,5 @@
 import datetime
+from email.utils import parsedate
 import time
 import uuid
 from django.contrib import admin
@@ -72,6 +73,17 @@ class Movie(models.Model):
                 role="director"
             )
             .first()
+        )
+
+    def user_watched(self, user_id):
+        return (
+            UserWatchedMovies.objects.filter(user_id=user_id, movie_id=self.id).count() > 0
+        )
+
+    def on_user_list(self, list_id):
+        print(list_id, self.id)
+        return (
+            MovieList.objects.filter(list_id=list_id, movie_id=self.id).count() > 0
         )
 
     def other_recommendations(self):
@@ -206,8 +218,23 @@ class UserWatchedMovies(models.Model):
         db_table = "movies_user_watched_movies"
 
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie: Movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     date_watched = models.DateTimeField(default=datetime.datetime.now())
+
+    def data(self):
+        parsed_date = ""
+        
+        if self.date_watched:
+            date_watched_date = str(self.date_watched).split(" ")[0] # YYYY-MM-DD
+            year, month, day = date_watched_date.split("-") # [YYYY, MM, DD]
+            parsed_date = f"{month}/{day}/{year}" # "MM/DD/YYYY"
+
+        return {
+            "id": self.movie.id,
+            "date_watched": parsed_date,
+            "title": self.movie.title,
+            "poster": self.movie.poster,
+        }
 
 
 class UserStreamingPlatform(models.Model):

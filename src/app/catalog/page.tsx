@@ -6,6 +6,8 @@ import { useSession } from '@/hooks/useSession'
 import { SessionProvider } from '@/providers/SessionProvider'
 
 export interface GetMovieResponse {
+  is_watched: boolean
+  is_on_list: boolean
   url: string
   id: number
   title: string

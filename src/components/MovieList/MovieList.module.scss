@@ -10,6 +10,11 @@
   }
 }
 
+.movieListButton {
+  display: flex;
+  justify-content: center;
+}
+
 .imageContainer {
   display: flex;
   border: 3px solid var(--black-cat);
@@ -44,7 +49,7 @@
   .movieList {
     grid-template-columns: repeat(6, 1fr);
     overflow-x: visible;
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
   }
 
   .imageContainer {
