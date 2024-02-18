@@ -1,5 +1,8 @@
 import { type GetMovieResponse, type GetMoviesResponse } from '@/app/catalog/page'
 
+export const NEXT_PUBLIC_SERVER_SIDE_BACKEND_URL = process.env.NEXT_PUBLIC_SERVER_SIDE_BACKEND_URL ?? ''
+export const NEXT_PUBLIC_CLIENT_SIDE_BACKEND_URL = process.env.NEXT_PUBLIC_CLIENT_SIDE_BACKEND_URL ?? ''
+
 export interface GetProfileResponse {
   watch_history: GetMovieResponse[]
   watch_list: GetMovieResponse[]
@@ -17,10 +20,10 @@ const headers = {
 
 export const getMovies = async (page: number): Promise<GetMoviesResponse> => {
   if (page === 1) {
-    const response = await fetch(`http://host.docker.internal:8000/movies?page=${page}`, { headers })
+    const response = await fetch(`${NEXT_PUBLIC_SERVER_SIDE_BACKEND_URL}/movies?page=${page}`, { headers })
     return await response.json()
   } else {
-    const response = await fetch(`http://localhost:8000/movies?page=${page}`, { headers })
+    const response = await fetch(`${NEXT_PUBLIC_SERVER_SIDE_BACKEND_URL}/movies?page=${page}`, { headers })
     return await response.json()
   }
 }
@@ -30,6 +33,6 @@ export const getProfile = async (cookie: string): Promise<GetProfileResponse> =>
     ...headers,
     'User-Cookie': cookie
   }
-  const response = await fetch('http://host.docker.internal:8000/users/me/profile', { headers: profileHeaders })
+  const response = await fetch(`${NEXT_PUBLIC_SERVER_SIDE_BACKEND_URL}/users/me/profile`, { headers: profileHeaders })
   return await response.json()
 }

@@ -1,4 +1,5 @@
 import datetime
+import logging
 import os
 
 import jwt
@@ -47,7 +48,7 @@ class RegisterAPI(GenericViewSet):
 
         user = serializer.save()
 
-        user_primary_list = List(user_id=user.id)
+        user_primary_list = List(user_id=user)
         user_primary_list.save()
 
         return Response({
@@ -81,9 +82,7 @@ class MeAPI(GenericViewSet):
 
             username = decoded_cookie.get("email")
             user_id = decoded_cookie.get("sub")
-
             user = get_user_model().objects.filter(id=user_id, email=username).first()
-
             return user
 
     def list(self, request, *args, **kwargs):
@@ -100,6 +99,17 @@ class MeAPI(GenericViewSet):
             })
         else:
             return UNAUTHORIZED_RESPONSE
+
+    def create_user_primary_list(self, user):
+        try:
+            primary_list = List(user_id=user)
+            primary_list.save()
+            return primary_list
+        
+        except Exception as e:
+            logging.error("Failed to create user primary list: ", e)
+            return None
+
 
     @action(methods=["get"], detail=False, url_path="profile", permission_classes=[permissions.AllowAny])
     def get_user_profile(self, request, *args, **kwargs):
@@ -118,26 +128,33 @@ class MeAPI(GenericViewSet):
 
         # User's primary list is their first list for now. When we add support for multiple lists, this will change.
         user_primary_list = user.list_set.first()
+        logging.info(f"user_primary_list: {user_primary_list}")
+        # Attempt to create if it doesn't exist
+        if not user_primary_list:
+            user_primary_list = self.create_user_primary_list(user)
+        
+        unwatched_movies_on_user_primary_list = []
 
-        # Easiest way to filter on the relationship `date_watched` is by querying the relationship itself
-        unwatched_in_list_subquery = (
-            MovieList.objects
-            .filter(
-                list_id=user_primary_list.id,
-                date_watched=None
+        if user_primary_list:
+            # Easiest way to filter on the relationship `date_watched` is by querying the relationship itself
+            unwatched_in_list_subquery = (
+                MovieList.objects
+                .filter(
+                    list_id=user_primary_list.id,
+                    date_watched=None
+                )
+                .values_list("movie_id", flat=True)
             )
-            .values_list("id", flat=True)
-        )
 
-        # We need the movie info, not just the watched/unwatched.
-        unwatched_movies_on_user_primary_list = (
-            Movie.objects
-            .filter(
-                id__in=(unwatched_in_list_subquery)
+            # We need the movie info, not just the watched/unwatched.
+            unwatched_movies_on_user_primary_list = (
+                Movie.objects
+                .filter(
+                    id__in=(unwatched_in_list_subquery)
+                )
+                .order_by("title")
+                .values()
             )
-            .order_by("title")
-            .values()
-        )
 
         return Response(data={
             "watch_history": [m.data() for m in user_watched_movies],
