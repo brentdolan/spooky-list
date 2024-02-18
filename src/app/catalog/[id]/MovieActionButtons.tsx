@@ -6,6 +6,7 @@ import { CheckRounded, PlaylistAdd, PlaylistRemove } from '@mui/icons-material'
 import { IconButton, Tooltip } from '@mui/material'
 import { SessionContext } from '@/providers/SessionProvider'
 import buttonStyles from '@/components/Button/Button.module.scss'
+import { NEXT_PUBLIC_CLIENT_SIDE_BACKEND_URL } from '@/helpers/fetch'
 
 interface MovieActionButtonProps {
   movieID: number
@@ -22,7 +23,7 @@ export const MovieActionButtons: React.FC<MovieActionButtonProps> = ({ movieID, 
 
   const markAsWatched = (): void => {
     setLoading(true)
-    void fetch('http://localhost:8000/users/me/watched/', {
+    void fetch(`${NEXT_PUBLIC_CLIENT_SIDE_BACKEND_URL}/users/me/watched/`, {
       method: 'POST',
       headers: {
         'User-Cookie': user.accessToken,
@@ -42,7 +43,7 @@ export const MovieActionButtons: React.FC<MovieActionButtonProps> = ({ movieID, 
 
   const unmarkAsWatched = (): void => {
     setLoading(true)
-    void fetch('http://localhost:8000/users/me/watched/', {
+    void fetch(`${NEXT_PUBLIC_CLIENT_SIDE_BACKEND_URL}/users/me/watched/`, {
       method: 'POST',
       headers: {
         'User-Cookie': user.accessToken,
@@ -62,7 +63,7 @@ export const MovieActionButtons: React.FC<MovieActionButtonProps> = ({ movieID, 
 
   const addToList = (): void => {
     setLoading(true)
-    void fetch('http://localhost:8000/users/me/list/', {
+    void fetch(`${NEXT_PUBLIC_CLIENT_SIDE_BACKEND_URL}/users/me/list/`, {
       method: 'POST',
       headers: {
         'User-Cookie': user.accessToken,
@@ -81,7 +82,7 @@ export const MovieActionButtons: React.FC<MovieActionButtonProps> = ({ movieID, 
   }
   const removeFromList = (): void => {
     setLoading(true)
-    void fetch('http://localhost:8000/users/me/list/', {
+    void fetch(`${NEXT_PUBLIC_CLIENT_SIDE_BACKEND_URL}/users/me/list/`, {
       method: 'POST',
       headers: {
         'User-Cookie': user.accessToken,

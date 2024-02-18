@@ -89,7 +89,7 @@ const SignUpPage: React.FC = async () => {
     supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: 'http://localhost:3000/auth/callback'
+        redirectTo: '/auth/callback'
       }
     }).catch((err) => {
       console.error(err)

@@ -4,11 +4,12 @@ import { type GetMovieResponse } from '@/app/catalog/page'
 import { MovieList } from '@/components/MovieList/MovieList'
 import { MovieActionButtons } from '@/app/catalog/[id]/MovieActionButtons'
 import { useSession } from '@/hooks/useSession'
+import { NEXT_PUBLIC_SERVER_SIDE_BACKEND_URL } from '@/helpers/fetch'
 
 const getMovie = async (id: string): Promise<GetMovieResponse> => {
   const { user } = await useSession()
   const response = await fetch(
-    `http://host.docker.internal:8000/movies/${id}`,
+    `${NEXT_PUBLIC_SERVER_SIDE_BACKEND_URL}/movies/${id}`,
     {
       headers: {
         'User-Cookie': user.accessToken,
