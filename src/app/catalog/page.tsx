@@ -42,7 +42,7 @@ const Page: React.FC = async () => {
       <SessionProvider hasSession={hasSession} user={user}>
           <div data-testid={'catalog'}>
               <NavBar currentPage={'Catalog'} />
-              <MovieList initialMovieList={movies.results} title={'All Movies'}/>
+              <MovieList initialMovieList={movies.results} title={'All Movies'} />
           </div>
       </SessionProvider>
   )

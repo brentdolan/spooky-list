@@ -27,7 +27,9 @@ class MovieViewSet(viewsets.ModelViewSet):
 
     def retrieve(self, request, pk=None):
         user = MeAPI.get_user_from_cookie(request)
-        user_primary_list = user.list_set.first()
+        user_primary_list = {}
+        if user:
+            user_primary_list = user.list_set.first()
 
         movie: Movie = Movie.objects.filter(id=pk).first()
 
@@ -35,12 +37,11 @@ class MovieViewSet(viewsets.ModelViewSet):
             return NOT_FOUND_RESPONSE
         
         serialized_movie = MovieSerializer(movie)
-        print(movie.on_user_list(user_primary_list.id))
 
         return Response(data={
             **serialized_movie.data,
-            "is_watched": movie.user_watched(user.id),
-            "is_on_list": movie.on_user_list(user_primary_list.id)
+            "is_watched": movie.user_watched(user.id) if user else False,
+            "is_on_list": movie.on_user_list(user_primary_list.id) if user_primary_list else False
         })
 
     @action(methods=["get"], detail=False, url_path="homefeed", permission_classes=[permissions.AllowAny])
