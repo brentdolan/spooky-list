@@ -1,0 +1,66 @@
+.formContainer {
+  width: 100%;
+
+  * {
+    width: 100%;
+  }
+}
+
+.linkText {
+  text-align: center;
+  color: var(--ghost);
+
+  a {
+    color: var(--grimace);
+  }
+}
+
+.header {
+ text-align: center;
+  font-family: var(--headingFont);
+  color: var(--ghost);
+  font-size: 2rem;
+}
+
+.textField {
+  margin-bottom: 1.5rem;
+  color: var(--ghost);
+}
+
+.divider {
+  margin-block: .75rem;
+  color: var(--ghost);
+
+  &::before, &::after {
+    border-top: 2px solid var(--ghost);
+  }
+}
+
+.form {
+  button {
+    margin-top: 2rem;
+
+  }
+}
+
+@media (min-width: 768px) {
+  .formContainer {
+    width: 80%;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .formContainer {
+    width: 50%;
+    margin-inline: auto;
+  }
+
+  .divider {
+    margin-block: 2rem;
+
+    &::before, &::after {
+      border-top: 2px solid var(--ghost);
+    }
+  }
+}

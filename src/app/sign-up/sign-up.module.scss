@@ -1,0 +1,104 @@
+.formContainer {
+  width: 100%;
+
+  * {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+
+.linkText {
+  text-align: center;
+  color: var(--ghost);
+
+  a {
+    color: var(--grimace);
+  }
+}
+
+.header {
+  text-align: center;
+  font-family: var(--headingFont);
+  color: var(--black-cat);
+  font-size: 2rem;
+}
+
+.textField {
+  margin-bottom: 1.5rem;
+  color: var(--ghost);
+}
+
+.divider {
+  margin-block: .75rem;
+  color: var(--ghost) !important;
+
+  &::before, &::after {
+    border-top: 2px solid var(--ghost);
+  }
+}
+
+.form {
+  button {
+    margin-top: 2rem;
+  }
+}
+
+.error {
+  font-family: var(--primaryFont);
+  background-color: darken(salmon, 5);
+  color: var(--ghost);
+  padding: .5rem 1rem;
+  display: flex;
+  gap: .5rem;
+  width: calc(100% - 2rem);
+  margin-top: 1rem;
+  border-radius: 8px;
+  justify-content: center;
+
+  svg {
+   width: min-content;
+  }
+}
+
+@media (min-width: 768px) {
+  .formContainer {
+    width: 80%;
+    margin-inline: auto;
+  }
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 1.5rem;
+    margin-bottom: 1rem;
+
+    .textField, button {
+      grid-column: span 2 !important;
+    }
+
+    .textField:nth-of-type(1), .textField:nth-of-type(2) {
+      grid-column: span 1 !important;
+    }
+  }
+
+
+}
+
+@media (min-width: 1024px) {
+  .formContainer {
+    width: 50%;
+    margin-inline: auto;
+  }
+
+  .divider {
+    margin-block: 2rem;
+
+    &::before, &::after {
+      border-top: 2px solid var(--ghost);
+    }
+  }
+}
