@@ -64,9 +64,16 @@ class MeAPI(GenericViewSet):
     serializer_class = UserSerializer
 
     @staticmethod
-    def get_user_from_cookie(request) -> get_user_model():
+    def get_user_from_cookie(request) -> get_user_model() | None:
+        if not 'HTTP_USER_COOKIE' in request.META:
+            return None
+
         if 'HTTP_USER_COOKIE' in request.META:
             cookie = request.META.get("HTTP_USER_COOKIE")
+
+            if not cookie:
+                return None
+
             decoded_cookie = jwt.decode(
                 cookie,
                 SUPABASE_JWT_SECRET,
@@ -105,7 +112,7 @@ class MeAPI(GenericViewSet):
             primary_list = List(user_id=user)
             primary_list.save()
             return primary_list
-        
+
         except Exception as e:
             logging.error("Failed to create user primary list: ", e)
             return None
@@ -132,7 +139,7 @@ class MeAPI(GenericViewSet):
         # Attempt to create if it doesn't exist
         if not user_primary_list:
             user_primary_list = self.create_user_primary_list(user)
-        
+
         unwatched_movies_on_user_primary_list = []
 
         if user_primary_list:
