@@ -10,9 +10,9 @@ const RootLayout: React.FC<LayoutProps> = async ({ children }) => {
   const { hasSession, user } = await useSession()
   return (
       <SessionProvider hasSession={hasSession} user={user}>
-              <NavBar currentPage={'/'}/>
-              {/* Children of Layout is Page */}
-              {children}
+          <NavBar currentPage={'/'}/>
+          {/* Children of Layout is Page */}
+          {children}
       </SessionProvider>
   )
 }

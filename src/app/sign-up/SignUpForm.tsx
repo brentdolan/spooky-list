@@ -1,14 +1,14 @@
-import React, {ChangeEventHandler, FormEventHandler, useState} from 'react'
+import React, { type ChangeEventHandler, type FormEventHandler, useState } from 'react'
 import styles from '@/app/sign-in/sign-in.module.scss'
 import { FormControl } from '@mui/base'
 import { InputLabel } from '@/components/Form/InputLabel'
 import { TextField } from '@/components/Form/TextField'
 import { Button } from '@/components/Button/Button'
 import { Error } from '@mui/icons-material'
-import {createClientComponentClient} from '@supabase/auth-helpers-nextjs';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
 interface SignUpFormProps { error: string, setError: (error: string) => void }
-export const SignUpForm: React.FC<SignUpFormProps> = ({error, setError}) => {
+export const SignUpForm: React.FC<SignUpFormProps> = ({ error, setError }) => {
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
@@ -80,30 +80,30 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({error, setError}) => {
 
   return (
 
-    <form onSubmit={onSubmit}>
-      <div className={styles.form}>
-        {
+      <form onSubmit={onSubmit}>
+          <div className={styles.form}>
+              {
           formFields.map((field) => (
-            <FormControl key={field.name} className={styles.textField}>
-              <InputLabel htmlFor={field.name}>{field.label}</InputLabel>
-              <TextField
-                onChange={onChange}
-                id={field.name}
-                name={field.name}
-                placeholder={field.placeholderText}
-                variant={'filled'}
-                InputLabelProps={{
-                  shrink: true
-                }}
-              />
-            </FormControl>
+              <FormControl key={field.name} className={styles.textField}>
+                  <InputLabel htmlFor={field.name}>{field.label}</InputLabel>
+                  <TextField
+                      onChange={onChange}
+                      id={field.name}
+                      name={field.name}
+                      placeholder={field.placeholderText}
+                      variant={'filled'}
+                      InputLabelProps={{
+                        shrink: true
+                      }}
+                  />
+              </FormControl>
           ))
         }
-      </div>
-      <Button onClick={() => {}} variant={'secondary'}>Sign Up With Email</Button>
-      {error !== '' && (
-        <div className={styles.error}><Error/>{error}</div>
-      )}
-    </form>
+          </div>
+          <Button onClick={() => {}} variant={'secondary'}>Sign Up With Email</Button>
+          {error !== '' && (
+          <div className={styles.error}><Error/>{error}</div>
+          )}
+      </form>
   )
 }

@@ -8,7 +8,7 @@ import { Error } from '@mui/icons-material'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
 interface SignInFormProps { error: string, setError: (error: string) => void }
-export const SignInForm: React.FC<SignInFormProps> = ({error, setError}) => {
+export const SignInForm: React.FC<SignInFormProps> = ({ error, setError }) => {
   const [userData, setUserData] = useState({
     email: '',
     password: ''
