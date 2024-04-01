@@ -1,5 +1,5 @@
 'use client'
-import React, {useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './sign-up.module.scss'
 import { Button } from '@/components/Button/Button'
 import { Divider } from '@mui/material'
@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { SessionContext } from '@/providers/SessionProvider'
 import { redirect } from 'next/navigation'
-import {SignUpForm} from '@/app/sign-up/SignUpForm'
+import { SignUpForm } from '@/app/sign-up/SignUpForm'
 
 const SignUpPage: React.FC = async () => {
   const { hasSession } = useContext(SessionContext)
@@ -16,7 +16,6 @@ const SignUpPage: React.FC = async () => {
   if (hasSession) {
     return redirect('/')
   }
-
 
   const signUpWithGoogle = (): void => {
     const supabase = createClientComponentClient()
@@ -30,7 +29,6 @@ const SignUpPage: React.FC = async () => {
       setError('Something went wrong. Please try again!')
     })
   }
-
 
   return (
       <div data-testid={'sign-up'}>
